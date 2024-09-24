@@ -16,7 +16,7 @@ struct Armor {
 bool readVideo(const std::string& filename, cv::VideoCapture& cap); // 从文件中读取视频
 void Draw(cv::Mat& frame, const std::vector<cv::Point2f>& mergedRect, const Armor& armor); // 绘制矩形在原图上
 
-int64 start; 
+int64 start;    
 std::vector<Armor> armors; 
 int main() {
     // 打开视频文件
