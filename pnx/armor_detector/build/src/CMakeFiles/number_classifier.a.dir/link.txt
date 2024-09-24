@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../lib/libnumber_classifier.a.a CMakeFiles/number_classifier.a.dir/number_classifier.cpp.o
+/usr/bin/ranlib ../../lib/libnumber_classifier.a.a

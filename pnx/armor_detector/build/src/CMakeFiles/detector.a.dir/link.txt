@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../lib/libdetector.a.a CMakeFiles/detector.a.dir/detector.cpp.o
+/usr/bin/ranlib ../../lib/libdetector.a.a
