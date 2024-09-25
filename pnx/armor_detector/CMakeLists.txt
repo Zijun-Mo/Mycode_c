@@ -1,34 +1,14 @@
-# 设置CMake最低版本要求
-cmake_minimum_required(VERSION 3.13)
-# 定义项目名称
-project(ARMOR_DETECTOR)
-# 指定C++版本
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-# 启用 -O2 优化选项
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2")
-
 # 静态库生成的路径
-set(LIB_PATH ${CMAKE_CURRENT_SOURCE_DIR}/lib)
-# 测试程序生成的路径
-set(EXEC_PATH ${CMAKE_CURRENT_SOURCE_DIR}/exe)
+set(LIB_PATH ${LIB_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/lib PERANT_SCOPE)
 # 头文件目录
-set(HEAD_PATH ${CMAKE_CURRENT_SOURCE_DIR}/include)
+set(HEAD_PATH ${HEAD_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/include PERANT_SCOPE)
 # 源文件目录
-set(SRC_PATH ${CMAKE_CURRENT_SOURCE_DIR}/src)
-
-#加载OpenCV库
-find_package(OpenCV REQUIRED)
-if(NOT ${OpenCV_FOUND})
-    message(FATAL_ERROR "OpenCV not found")
-endif()
+set(SRC_PATH ${SRC_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/src PERANT_SCOPE)
 
 #库名称
 set(LIBS_OpenCV ${OpenCV_LIBS})
 
-#可执行文件名称
-set(EXEC_ARMO armor_detector "")
-
-
-#添加子目录
-add_subdirectory(main)
+# 链接源文件
+set(SRC_FILES ${SRC_PATH} ${SRC_PATH}/detector.cpp
+                          ${SRC_PATH}/number_classifier.cpp
+                          ${SRC_PATH}/pnp_solver.cpp PERANT_SCOPE)

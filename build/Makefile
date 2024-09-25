@@ -116,19 +116,6 @@ depend:
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-#=============================================================================
-# Target rules for targets named armor_detector
-
-# Build rule for target.
-armor_detector: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 armor_detector
-.PHONY : armor_detector
-
-# fast build rule for target.
-armor_detector/fast:
-	$(MAKE) $(MAKESILENT) -f main/CMakeFiles/armor_detector.dir/build.make main/CMakeFiles/armor_detector.dir/build
-.PHONY : armor_detector/fast
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -137,7 +124,6 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... armor_detector"
 .PHONY : help
 
 
