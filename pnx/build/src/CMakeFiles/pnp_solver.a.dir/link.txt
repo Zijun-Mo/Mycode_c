@@ -1,2 +1,0 @@
-/usr/bin/ar qc ../../lib/libpnp_solver.a.a CMakeFiles/pnp_solver.a.dir/pnp_solver.cpp.o
-/usr/bin/ranlib ../../lib/libpnp_solver.a.a

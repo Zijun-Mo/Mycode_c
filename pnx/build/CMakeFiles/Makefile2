@@ -54,66 +54,68 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/mozijun/Mycode_c/pnx/armor_detector
+CMAKE_SOURCE_DIR = /home/mozijun/Mycode_c/pnx
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/mozijun/Mycode_c/pnx/armor_detector/build
+CMAKE_BINARY_DIR = /home/mozijun/Mycode_c/pnx/build
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: main/all
+all: CMakeFiles/auto_aim.dir/all
+all: armor_detector/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
-preinstall: main/preinstall
+preinstall: armor_detector/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: main/clean
+clean: CMakeFiles/auto_aim.dir/clean
+clean: armor_detector/clean
 .PHONY : clean
 
 #=============================================================================
-# Directory level rules for directory main
+# Directory level rules for directory armor_detector
 
 # Recursive "all" directory target.
-main/all: main/CMakeFiles/armor_detector.dir/all
-.PHONY : main/all
+armor_detector/all:
+.PHONY : armor_detector/all
 
 # Recursive "preinstall" directory target.
-main/preinstall:
-.PHONY : main/preinstall
+armor_detector/preinstall:
+.PHONY : armor_detector/preinstall
 
 # Recursive "clean" directory target.
-main/clean: main/CMakeFiles/armor_detector.dir/clean
-.PHONY : main/clean
+armor_detector/clean:
+.PHONY : armor_detector/clean
 
 #=============================================================================
-# Target rules for target main/CMakeFiles/armor_detector.dir
+# Target rules for target CMakeFiles/auto_aim.dir
 
 # All Build rule for target.
-main/CMakeFiles/armor_detector.dir/all:
-	$(MAKE) $(MAKESILENT) -f main/CMakeFiles/armor_detector.dir/build.make main/CMakeFiles/armor_detector.dir/depend
-	$(MAKE) $(MAKESILENT) -f main/CMakeFiles/armor_detector.dir/build.make main/CMakeFiles/armor_detector.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/mozijun/Mycode_c/pnx/armor_detector/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target armor_detector"
-.PHONY : main/CMakeFiles/armor_detector.dir/all
+CMakeFiles/auto_aim.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/auto_aim.dir/build.make CMakeFiles/auto_aim.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/auto_aim.dir/build.make CMakeFiles/auto_aim.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/mozijun/Mycode_c/pnx/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target auto_aim"
+.PHONY : CMakeFiles/auto_aim.dir/all
 
 # Build rule for subdir invocation for target.
-main/CMakeFiles/armor_detector.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/mozijun/Mycode_c/pnx/armor_detector/build/CMakeFiles 5
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main/CMakeFiles/armor_detector.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/mozijun/Mycode_c/pnx/armor_detector/build/CMakeFiles 0
-.PHONY : main/CMakeFiles/armor_detector.dir/rule
+CMakeFiles/auto_aim.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/mozijun/Mycode_c/pnx/build/CMakeFiles 5
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/auto_aim.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/mozijun/Mycode_c/pnx/build/CMakeFiles 0
+.PHONY : CMakeFiles/auto_aim.dir/rule
 
 # Convenience name for target.
-armor_detector: main/CMakeFiles/armor_detector.dir/rule
-.PHONY : armor_detector
+auto_aim: CMakeFiles/auto_aim.dir/rule
+.PHONY : auto_aim
 
 # clean rule for target.
-main/CMakeFiles/armor_detector.dir/clean:
-	$(MAKE) $(MAKESILENT) -f main/CMakeFiles/armor_detector.dir/build.make main/CMakeFiles/armor_detector.dir/clean
-.PHONY : main/CMakeFiles/armor_detector.dir/clean
+CMakeFiles/auto_aim.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/auto_aim.dir/build.make CMakeFiles/auto_aim.dir/clean
+.PHONY : CMakeFiles/auto_aim.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

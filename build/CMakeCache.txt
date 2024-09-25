@@ -14,15 +14,6 @@
 # EXTERNAL cache entries
 ########################
 
-//Value Computed by CMake
-ARMOR_DETECTOR_BINARY_DIR:STATIC=/home/mozijun/Mycode_c/build
-
-//Value Computed by CMake
-ARMOR_DETECTOR_IS_TOP_LEVEL:STATIC=ON
-
-//Value Computed by CMake
-ARMOR_DETECTOR_SOURCE_DIR:STATIC=/home/mozijun/Mycode_c/pnx/armor_detector
-
 //Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=/usr/bin/addr2line
 
@@ -228,18 +219,6 @@ EXECUTABLE_OUTPUT_PATH:PATH=
 LIBRARY_OUTPUT_PATH:PATH=
 
 //Value Computed by CMake
-MAIN_BINARY_DIR:STATIC=/home/mozijun/Mycode_c/build/main
-
-//Value Computed by CMake
-MAIN_IS_TOP_LEVEL:STATIC=OFF
-
-//Value Computed by CMake
-MAIN_SOURCE_DIR:STATIC=/home/mozijun/Mycode_c/pnx/armor_detector/main
-
-//The directory containing a CMake configuration file for OpenCV.
-OpenCV_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/opencv4
-
-//Value Computed by CMake
 Project_BINARY_DIR:STATIC=/home/mozijun/Mycode_c/build
 
 //Value Computed by CMake
@@ -394,6 +373,4 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
-//Details about finding OpenCV
-FIND_PACKAGE_MESSAGE_DETAILS_OpenCV:INTERNAL=[/usr][v4.5.4()]
 

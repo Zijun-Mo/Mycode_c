@@ -87,14 +87,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/mozijun/Mycode_c/pnx/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/mozijun/Mycode_c/pnx/build/CMakeFiles /home/mozijun/Mycode_c/pnx/build/main//CMakeFiles/progress.marks
-	cd /home/mozijun/Mycode_c/pnx/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main/all
+	cd /home/mozijun/Mycode_c/pnx/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/mozijun/Mycode_c/pnx/build/CMakeFiles /home/mozijun/Mycode_c/pnx/build/armor_detector//CMakeFiles/progress.marks
+	cd /home/mozijun/Mycode_c/pnx/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 armor_detector/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/mozijun/Mycode_c/pnx/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/mozijun/Mycode_c/pnx/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main/clean
+	cd /home/mozijun/Mycode_c/pnx/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 armor_detector/clean
 .PHONY : clean
 
 # The main clean target
@@ -103,56 +103,18 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/mozijun/Mycode_c/pnx/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main/preinstall
+	cd /home/mozijun/Mycode_c/pnx/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 armor_detector/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/mozijun/Mycode_c/pnx/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main/preinstall
+	cd /home/mozijun/Mycode_c/pnx/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 armor_detector/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
 	cd /home/mozijun/Mycode_c/pnx/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
-
-# Convenience name for target.
-main/CMakeFiles/auto_aim.dir/rule:
-	cd /home/mozijun/Mycode_c/pnx/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main/CMakeFiles/auto_aim.dir/rule
-.PHONY : main/CMakeFiles/auto_aim.dir/rule
-
-# Convenience name for target.
-auto_aim: main/CMakeFiles/auto_aim.dir/rule
-.PHONY : auto_aim
-
-# fast build rule for target.
-auto_aim/fast:
-	cd /home/mozijun/Mycode_c/pnx/build && $(MAKE) $(MAKESILENT) -f main/CMakeFiles/auto_aim.dir/build.make main/CMakeFiles/auto_aim.dir/build
-.PHONY : auto_aim/fast
-
-main.o: main.cpp.o
-.PHONY : main.o
-
-# target to build an object file
-main.cpp.o:
-	cd /home/mozijun/Mycode_c/pnx/build && $(MAKE) $(MAKESILENT) -f main/CMakeFiles/auto_aim.dir/build.make main/CMakeFiles/auto_aim.dir/main.cpp.o
-.PHONY : main.cpp.o
-
-main.i: main.cpp.i
-.PHONY : main.i
-
-# target to preprocess a source file
-main.cpp.i:
-	cd /home/mozijun/Mycode_c/pnx/build && $(MAKE) $(MAKESILENT) -f main/CMakeFiles/auto_aim.dir/build.make main/CMakeFiles/auto_aim.dir/main.cpp.i
-.PHONY : main.cpp.i
-
-main.s: main.cpp.s
-.PHONY : main.s
-
-# target to generate assembly for a file
-main.cpp.s:
-	cd /home/mozijun/Mycode_c/pnx/build && $(MAKE) $(MAKESILENT) -f main/CMakeFiles/auto_aim.dir/build.make main/CMakeFiles/auto_aim.dir/main.cpp.s
-.PHONY : main.cpp.s
 
 # Help Target
 help:
@@ -162,10 +124,6 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... auto_aim"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
 .PHONY : help
 
 

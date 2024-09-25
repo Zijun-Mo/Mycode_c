@@ -8,14 +8,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # 启用 -O2 优化选项
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2")
 
-# 静态库生成的路径
-set(LIB_PATH ${CMAKE_CURRENT_SOURCE_DIR}/lib)
 # 测试程序生成的路径
-set(EXEC_PATH ${CMAKE_CURRENT_SOURCE_DIR}/exe)
-# 头文件目录
-set(HEAD_PATH ${CMAKE_CURRENT_SOURCE_DIR}/include)
-# 源文件目录
-set(SRC_PATH ${CMAKE_CURRENT_SOURCE_DIR}/src)
+set(EXEC_PATH ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 
 #加载OpenCV库
 find_package(OpenCV REQUIRED)
@@ -26,9 +20,12 @@ endif()
 #库名称
 set(LIBS_OpenCV ${OpenCV_LIBS})
 
-#可执行文件名称
-set(EXEC_AIM auto_aim "")
+#可执行文件
+set(EXEC_AIM auto_aim)
+set(EXECUTABLE_OUTPUT_PATH ${EXEC_PATH})
+add_executable(${EXEC_AIM} main.cpp)
 
 #添加子目录
-add_subdirectory(main)
 add_subdirectory(armor_detector)
+
+target_link_libraries(${EXEC_AIM} ${LIBS_OpenCV})

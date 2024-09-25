@@ -1,5 +1,5 @@
-/home/mozijun/Mycode_c/pnx/armor_detector/build/CMakeFiles/edit_cache.dir
-/home/mozijun/Mycode_c/pnx/armor_detector/build/CMakeFiles/rebuild_cache.dir
-/home/mozijun/Mycode_c/pnx/armor_detector/build/main/CMakeFiles/armor_detector.dir
-/home/mozijun/Mycode_c/pnx/armor_detector/build/main/CMakeFiles/edit_cache.dir
-/home/mozijun/Mycode_c/pnx/armor_detector/build/main/CMakeFiles/rebuild_cache.dir
+/home/mozijun/Mycode_c/pnx/build/CMakeFiles/auto_aim.dir
+/home/mozijun/Mycode_c/pnx/build/CMakeFiles/edit_cache.dir
+/home/mozijun/Mycode_c/pnx/build/CMakeFiles/rebuild_cache.dir
+/home/mozijun/Mycode_c/pnx/build/armor_detector/CMakeFiles/edit_cache.dir
+/home/mozijun/Mycode_c/pnx/build/armor_detector/CMakeFiles/rebuild_cache.dir

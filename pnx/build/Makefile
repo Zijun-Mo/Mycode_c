@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/mozijun/Mycode_c/pnx/armor_detector
+CMAKE_SOURCE_DIR = /home/mozijun/Mycode_c/pnx
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/mozijun/Mycode_c/pnx/armor_detector/build
+CMAKE_BINARY_DIR = /home/mozijun/Mycode_c/pnx/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/mozijun/Mycode_c/pnx/armor_detector/build/CMakeFiles /home/mozijun/Mycode_c/pnx/armor_detector/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/mozijun/Mycode_c/pnx/build/CMakeFiles /home/mozijun/Mycode_c/pnx/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/mozijun/Mycode_c/pnx/armor_detector/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/mozijun/Mycode_c/pnx/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -117,17 +117,113 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named armor_detector
+# Target rules for targets named auto_aim
 
 # Build rule for target.
-armor_detector: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 armor_detector
-.PHONY : armor_detector
+auto_aim: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 auto_aim
+.PHONY : auto_aim
 
 # fast build rule for target.
-armor_detector/fast:
-	$(MAKE) $(MAKESILENT) -f main/CMakeFiles/armor_detector.dir/build.make main/CMakeFiles/armor_detector.dir/build
-.PHONY : armor_detector/fast
+auto_aim/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/auto_aim.dir/build.make CMakeFiles/auto_aim.dir/build
+.PHONY : auto_aim/fast
+
+armor_detector/src/detector.o: armor_detector/src/detector.cpp.o
+.PHONY : armor_detector/src/detector.o
+
+# target to build an object file
+armor_detector/src/detector.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/auto_aim.dir/build.make CMakeFiles/auto_aim.dir/armor_detector/src/detector.cpp.o
+.PHONY : armor_detector/src/detector.cpp.o
+
+armor_detector/src/detector.i: armor_detector/src/detector.cpp.i
+.PHONY : armor_detector/src/detector.i
+
+# target to preprocess a source file
+armor_detector/src/detector.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/auto_aim.dir/build.make CMakeFiles/auto_aim.dir/armor_detector/src/detector.cpp.i
+.PHONY : armor_detector/src/detector.cpp.i
+
+armor_detector/src/detector.s: armor_detector/src/detector.cpp.s
+.PHONY : armor_detector/src/detector.s
+
+# target to generate assembly for a file
+armor_detector/src/detector.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/auto_aim.dir/build.make CMakeFiles/auto_aim.dir/armor_detector/src/detector.cpp.s
+.PHONY : armor_detector/src/detector.cpp.s
+
+armor_detector/src/number_classifier.o: armor_detector/src/number_classifier.cpp.o
+.PHONY : armor_detector/src/number_classifier.o
+
+# target to build an object file
+armor_detector/src/number_classifier.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/auto_aim.dir/build.make CMakeFiles/auto_aim.dir/armor_detector/src/number_classifier.cpp.o
+.PHONY : armor_detector/src/number_classifier.cpp.o
+
+armor_detector/src/number_classifier.i: armor_detector/src/number_classifier.cpp.i
+.PHONY : armor_detector/src/number_classifier.i
+
+# target to preprocess a source file
+armor_detector/src/number_classifier.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/auto_aim.dir/build.make CMakeFiles/auto_aim.dir/armor_detector/src/number_classifier.cpp.i
+.PHONY : armor_detector/src/number_classifier.cpp.i
+
+armor_detector/src/number_classifier.s: armor_detector/src/number_classifier.cpp.s
+.PHONY : armor_detector/src/number_classifier.s
+
+# target to generate assembly for a file
+armor_detector/src/number_classifier.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/auto_aim.dir/build.make CMakeFiles/auto_aim.dir/armor_detector/src/number_classifier.cpp.s
+.PHONY : armor_detector/src/number_classifier.cpp.s
+
+armor_detector/src/pnp_solver.o: armor_detector/src/pnp_solver.cpp.o
+.PHONY : armor_detector/src/pnp_solver.o
+
+# target to build an object file
+armor_detector/src/pnp_solver.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/auto_aim.dir/build.make CMakeFiles/auto_aim.dir/armor_detector/src/pnp_solver.cpp.o
+.PHONY : armor_detector/src/pnp_solver.cpp.o
+
+armor_detector/src/pnp_solver.i: armor_detector/src/pnp_solver.cpp.i
+.PHONY : armor_detector/src/pnp_solver.i
+
+# target to preprocess a source file
+armor_detector/src/pnp_solver.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/auto_aim.dir/build.make CMakeFiles/auto_aim.dir/armor_detector/src/pnp_solver.cpp.i
+.PHONY : armor_detector/src/pnp_solver.cpp.i
+
+armor_detector/src/pnp_solver.s: armor_detector/src/pnp_solver.cpp.s
+.PHONY : armor_detector/src/pnp_solver.s
+
+# target to generate assembly for a file
+armor_detector/src/pnp_solver.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/auto_aim.dir/build.make CMakeFiles/auto_aim.dir/armor_detector/src/pnp_solver.cpp.s
+.PHONY : armor_detector/src/pnp_solver.cpp.s
+
+main.o: main.cpp.o
+.PHONY : main.o
+
+# target to build an object file
+main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/auto_aim.dir/build.make CMakeFiles/auto_aim.dir/main.cpp.o
+.PHONY : main.cpp.o
+
+main.i: main.cpp.i
+.PHONY : main.i
+
+# target to preprocess a source file
+main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/auto_aim.dir/build.make CMakeFiles/auto_aim.dir/main.cpp.i
+.PHONY : main.cpp.i
+
+main.s: main.cpp.s
+.PHONY : main.s
+
+# target to generate assembly for a file
+main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/auto_aim.dir/build.make CMakeFiles/auto_aim.dir/main.cpp.s
+.PHONY : main.cpp.s
 
 # Help Target
 help:
@@ -137,7 +233,19 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... armor_detector"
+	@echo "... auto_aim"
+	@echo "... armor_detector/src/detector.o"
+	@echo "... armor_detector/src/detector.i"
+	@echo "... armor_detector/src/detector.s"
+	@echo "... armor_detector/src/number_classifier.o"
+	@echo "... armor_detector/src/number_classifier.i"
+	@echo "... armor_detector/src/number_classifier.s"
+	@echo "... armor_detector/src/pnp_solver.o"
+	@echo "... armor_detector/src/pnp_solver.i"
+	@echo "... armor_detector/src/pnp_solver.s"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 .PHONY : help
 
 

@@ -8,10 +8,10 @@ set(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
   "../CMakeLists.txt"
+  "../armor_detector/CMakeLists.txt"
   "CMakeFiles/3.22.1/CMakeCCompiler.cmake"
   "CMakeFiles/3.22.1/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.22.1/CMakeSystem.cmake"
-  "../main/CMakeLists.txt"
   "/usr/lib/x86_64-linux-gnu/cmake/opencv4/OpenCVConfig-version.cmake"
   "/usr/lib/x86_64-linux-gnu/cmake/opencv4/OpenCVConfig.cmake"
   "/usr/lib/x86_64-linux-gnu/cmake/opencv4/OpenCVModules-release.cmake"
@@ -46,10 +46,10 @@ set(CMAKE_MAKEFILE_OUTPUTS
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
-  "main/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "armor_detector/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "main/CMakeFiles/armor_detector.dir/DependInfo.cmake"
+  "CMakeFiles/auto_aim.dir/DependInfo.cmake"
   )

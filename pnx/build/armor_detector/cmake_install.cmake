@@ -1,4 +1,4 @@
-# Install script for directory: /home/mozijun/Mycode_c/pnx/main
+# Install script for directory: /home/mozijun/Mycode_c/pnx/armor_detector
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
