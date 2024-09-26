@@ -201,6 +201,30 @@ armor_detector/src/pnp_solver.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/auto_aim.dir/build.make CMakeFiles/auto_aim.dir/armor_detector/src/pnp_solver.cpp.s
 .PHONY : armor_detector/src/pnp_solver.cpp.s
 
+armor_tracker/src/tracker.o: armor_tracker/src/tracker.cpp.o
+.PHONY : armor_tracker/src/tracker.o
+
+# target to build an object file
+armor_tracker/src/tracker.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/auto_aim.dir/build.make CMakeFiles/auto_aim.dir/armor_tracker/src/tracker.cpp.o
+.PHONY : armor_tracker/src/tracker.cpp.o
+
+armor_tracker/src/tracker.i: armor_tracker/src/tracker.cpp.i
+.PHONY : armor_tracker/src/tracker.i
+
+# target to preprocess a source file
+armor_tracker/src/tracker.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/auto_aim.dir/build.make CMakeFiles/auto_aim.dir/armor_tracker/src/tracker.cpp.i
+.PHONY : armor_tracker/src/tracker.cpp.i
+
+armor_tracker/src/tracker.s: armor_tracker/src/tracker.cpp.s
+.PHONY : armor_tracker/src/tracker.s
+
+# target to generate assembly for a file
+armor_tracker/src/tracker.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/auto_aim.dir/build.make CMakeFiles/auto_aim.dir/armor_tracker/src/tracker.cpp.s
+.PHONY : armor_tracker/src/tracker.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -243,6 +267,9 @@ help:
 	@echo "... armor_detector/src/pnp_solver.o"
 	@echo "... armor_detector/src/pnp_solver.i"
 	@echo "... armor_detector/src/pnp_solver.s"
+	@echo "... armor_tracker/src/tracker.o"
+	@echo "... armor_tracker/src/tracker.i"
+	@echo "... armor_tracker/src/tracker.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

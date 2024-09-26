@@ -10,6 +10,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2")
 
 # 测试程序生成的路径
 set(EXEC_PATH ${CMAKE_CURRENT_SOURCE_DIR}/bin)
+set(CMAKE_BUILD_TYPE "Debug")
 
 #加载OpenCV库
 find_package(OpenCV REQUIRED)
@@ -27,5 +28,6 @@ add_executable(${EXEC_AIM} main.cpp)
 
 #添加子目录
 add_subdirectory(armor_detector)
+add_subdirectory(armor_tracker)
 
 target_link_libraries(${EXEC_AIM} ${LIBS_OpenCV})

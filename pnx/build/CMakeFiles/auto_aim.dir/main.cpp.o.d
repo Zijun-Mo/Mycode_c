@@ -335,4 +335,7 @@ CMakeFiles/auto_aim.dir/main.cpp.o: /home/mozijun/Mycode_c/pnx/main.cpp \
  /usr/include/opencv4/opencv2/video/background_segm.hpp \
  /home/mozijun/Mycode_c/pnx/armor_detector/include/number_classifier.hpp \
  /home/mozijun/Mycode_c/pnx/armor_detector/include/pnp_solver.hpp \
- /home/mozijun/Mycode_c/pnx/armor_detector/include/detector.hpp
+ /home/mozijun/Mycode_c/pnx/armor_detector/include/detector.hpp \
+ /home/mozijun/Mycode_c/pnx/armor_detector/include/armor.hpp \
+ /home/mozijun/Mycode_c/pnx/armor_detector/include/pnp_solver.hpp \
+ /home/mozijun/Mycode_c/pnx/armor_tracker/include/tracker.hpp

@@ -65,15 +65,18 @@ CMAKE_BINARY_DIR = /home/mozijun/Mycode_c/pnx/build
 # The main recursive "all" target.
 all: CMakeFiles/auto_aim.dir/all
 all: armor_detector/all
+all: armor_tracker/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
 preinstall: armor_detector/preinstall
+preinstall: armor_tracker/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
 clean: CMakeFiles/auto_aim.dir/clean
 clean: armor_detector/clean
+clean: armor_tracker/clean
 .PHONY : clean
 
 #=============================================================================
@@ -92,18 +95,33 @@ armor_detector/clean:
 .PHONY : armor_detector/clean
 
 #=============================================================================
+# Directory level rules for directory armor_tracker
+
+# Recursive "all" directory target.
+armor_tracker/all:
+.PHONY : armor_tracker/all
+
+# Recursive "preinstall" directory target.
+armor_tracker/preinstall:
+.PHONY : armor_tracker/preinstall
+
+# Recursive "clean" directory target.
+armor_tracker/clean:
+.PHONY : armor_tracker/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/auto_aim.dir
 
 # All Build rule for target.
 CMakeFiles/auto_aim.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/auto_aim.dir/build.make CMakeFiles/auto_aim.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/auto_aim.dir/build.make CMakeFiles/auto_aim.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/mozijun/Mycode_c/pnx/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target auto_aim"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/mozijun/Mycode_c/pnx/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target auto_aim"
 .PHONY : CMakeFiles/auto_aim.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/auto_aim.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/mozijun/Mycode_c/pnx/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/mozijun/Mycode_c/pnx/build/CMakeFiles 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/auto_aim.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/mozijun/Mycode_c/pnx/build/CMakeFiles 0
 .PHONY : CMakeFiles/auto_aim.dir/rule

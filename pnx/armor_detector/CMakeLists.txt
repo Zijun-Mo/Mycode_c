@@ -6,9 +6,6 @@ set(HEAD_PATH ${CMAKE_CURRENT_SOURCE_DIR}/include)
 # 源文件目录
 set(SRC_PATH ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
-#库名称
-set(LIBS_OpenCV ${OpenCV_LIBS})
-
 # 链接源文件
 target_sources(${EXEC_AIM} PRIVATE ${SRC_PATH}/detector.cpp
                                    ${SRC_PATH}/number_classifier.cpp

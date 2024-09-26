@@ -8,7 +8,8 @@
 class PnPSolver {
 public:
     PnPSolver();
-
+    PnPSolver& operator = (const PnPSolver& other);  //重载=号
+    cv::Point2f worldToImage(const cv::Point3f& worldPoint);
     cv::Mat solvePnPWithIPPE(const std::vector<cv::Point2f>& imagePoints, const std::string& filename, const bool issmall); // PnP解算器函数
 
 private:

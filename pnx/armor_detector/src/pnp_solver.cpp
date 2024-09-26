@@ -17,6 +17,23 @@ PnPSolver::PnPSolver() {
         cv::Point3f(-0.0635, 0.0625, 0.0) 
     };// 世界坐标系中的四个点
 }
+// 拷贝赋值运算符
+PnPSolver& PnPSolver::operator=(const PnPSolver& other) {
+    if (this == &other) {
+        return *this; // 防止自我赋值
+    }
+    l_points = other.l_points;
+    s_points = other.s_points;
+    objectPoints = other.objectPoints;
+    rvec = other.rvec.clone();
+    tvec = other.tvec.clone();
+    rotationMatrix = other.rotationMatrix.clone();
+    transformMatrix = other.transformMatrix.clone();
+    cameraMatrix = other.cameraMatrix.clone();
+    distCoeffs = other.distCoeffs.clone();
+    success = other.success;
+    return *this;
+}
 // PnP解算器函数
 cv::Mat PnPSolver::solvePnPWithIPPE(const std::vector<cv::Point2f>& imagePoints, const std::string& filename, const bool issmall)
 {
@@ -61,4 +78,16 @@ bool PnPSolver::readCameraParameters(const std::string& filename, cv::Mat& camer
     fs.release();
 
     return true;
+}
+
+// 将世界坐标系的点转换为图像坐标系的点
+cv::Point2f PnPSolver::worldToImage(const cv::Point3f& worldPoint) {
+    // 检查矩阵是否为空
+    if (rvec.empty() || tvec.empty() || cameraMatrix.empty() || distCoeffs.empty()) {
+        throw std::runtime_error("相机参数或PnP解算结果未初始化");
+    }
+    std::vector<cv::Point3f> objectPoints = { worldPoint };
+    std::vector<cv::Point2f> imagePoints;
+    cv::projectPoints(objectPoints, rvec, tvec, cameraMatrix, distCoeffs, imagePoints);
+    return imagePoints[0];
 }

@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/mozijun/Mycode_c/pnx/armor_detector/include -isystem /usr/include/opencv4
+CXX_INCLUDES = -I/home/mozijun/Mycode_c/pnx/armor_detector/include -I/home/mozijun/Mycode_c/pnx/armor_tracker/include -isystem /usr/include/opencv4
 
-CXX_FLAGS =  -O2 -std=gnu++11
+CXX_FLAGS =  -O2 -g -std=gnu++11
 

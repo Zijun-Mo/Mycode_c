@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/auto_aim.dir/armor_detector/src/number_classifier.cpp.o.d"
   "CMakeFiles/auto_aim.dir/armor_detector/src/pnp_solver.cpp.o"
   "CMakeFiles/auto_aim.dir/armor_detector/src/pnp_solver.cpp.o.d"
+  "CMakeFiles/auto_aim.dir/armor_tracker/src/tracker.cpp.o"
+  "CMakeFiles/auto_aim.dir/armor_tracker/src/tracker.cpp.o.d"
   "CMakeFiles/auto_aim.dir/main.cpp.o"
   "CMakeFiles/auto_aim.dir/main.cpp.o.d"
 )
