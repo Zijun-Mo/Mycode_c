@@ -13,7 +13,7 @@ NumberClassifier::NumberClassifier(const std::string &model_path, const std::str
 
 // 加载模型
 void NumberClassifier::loadModel(const std::string &model_path) {
-    net_ = cv::dnn::readNetFromONNX("../model/" + model_path);
+    net_ = cv::dnn::readNetFromONNX("../armor_detector/model/" + model_path);
     if (net_.empty()) {
         throw std::runtime_error("Failed to load ONNX model from " + model_path);
     }
@@ -21,7 +21,7 @@ void NumberClassifier::loadModel(const std::string &model_path) {
 
 // 加载标签
 void NumberClassifier::loadLabels(const std::string &label_path) {
-    std::ifstream label_file("../model/" + label_path);
+    std::ifstream label_file("../armor_detector/model/" + label_path);
     if (!label_file.is_open()) {
         throw std::runtime_error("Failed to open label file: " + label_path);
     }
