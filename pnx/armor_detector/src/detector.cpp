@@ -6,7 +6,7 @@
 Detector::Detector(){
 
 }
-cv::Mat Detector::convertToAdaptiveBinary(const cv::Mat& img, const cv::Ptr<cv::CLAHE> clahe) {
+cv::Mat Detector::convertToAdaptiveBinary(const cv::Mat& img, const cv::Ptr<cv::CLAHE> clahe, const int& clipLimit) {
     cv::Mat grayImg, equalizedImg, binaryImg; 
 
     // 将图像转换为红色通道减去蓝色通道的灰度图像
@@ -21,12 +21,14 @@ cv::Mat Detector::convertToAdaptiveBinary(const cv::Mat& img, const cv::Ptr<cv::
     // cv::waitKey(30); 
 
     // 进行全局二值化
-    cv::threshold(equalizedImg, binaryImg, 180, 255, cv::THRESH_BINARY);
+    cv::threshold(equalizedImg, binaryImg, clipLimit, 255, cv::THRESH_BINARY);
     // std::cout << (cv::getTickCount() - start) / cv::getTickFrequency() << "\n"; 
 
     // 去除小于9个像素的明亮噪点
     cv::Mat morphKernel = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(3, 3));
     cv::morphologyEx(binaryImg, binaryImg, cv::MORPH_OPEN, morphKernel); 
+    // imshow("binaryImg", binaryImg);
+    // cv::waitKey(30);
 
     return binaryImg;
 }
@@ -55,11 +57,11 @@ std::vector<cv::RotatedRect> Detector::processContours(const cv::Mat& binaryImg,
             continue; 
         }
         // 绘制矩形在原图上
-        cv::Point2f rectPoints[4];
-        minRect.points(rectPoints);
-        for (int j = 0; j < 4; j++) {
-            cv::line(originalImg, rectPoints[j], rectPoints[(j + 1) % 4], cv::Scalar(0, 255, 0), 1);
-        }
+        // cv::Point2f rectPoints[4];
+        // minRect.points(rectPoints);
+        // for (int j = 0; j < 4; j++) {
+        //     cv::line(originalImg, rectPoints[j], rectPoints[(j + 1) % 4], cv::Scalar(0, 255, 0), 1);
+        // }
         // 保存矩形在动态数组中
         rectangles.push_back(minRect);
     }

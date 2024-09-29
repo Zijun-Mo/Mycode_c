@@ -91,3 +91,9 @@ cv::Point2f PnPSolver::worldToImage(const cv::Point3f& worldPoint) {
     cv::projectPoints(objectPoints, rvec, tvec, cameraMatrix, distCoeffs, imagePoints);
     return imagePoints[0];
 }
+// 更新外参的函数
+void PnPSolver::updateExtrinsic(const double& x, const double& y, const double& z) {
+    tvec.at<double>(0) = x;
+    tvec.at<double>(1) = y;
+    tvec.at<double>(2) = z;
+}

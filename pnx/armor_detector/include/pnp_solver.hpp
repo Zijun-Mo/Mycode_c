@@ -11,12 +11,13 @@ public:
     PnPSolver& operator = (const PnPSolver& other);  //重载=号
     cv::Point2f worldToImage(const cv::Point3f& worldPoint);
     cv::Mat solvePnPWithIPPE(const std::vector<cv::Point2f>& imagePoints, const std::string& filename, const bool issmall); // PnP解算器函数
+    void updateExtrinsic(const double& x, const double& y, const double& z); // 更新外参函数
 
 private:
     std::vector<cv::Point3f> l_points, s_points; 
     std::vector<cv::Point3f> objectPoints; 
     cv::Mat rvec, tvec, rotationMatrix, transformMatrix; 
-    cv::Mat cameraMatrix = cv::Mat::eye(3, 3, CV_64F), distCoeffs = cv::Mat::zeros(5, 1, CV_64F); 
+    cv::Mat cameraMatrix, distCoeffs; 
     bool success; 
     
     bool readCameraParameters(const std::string& filename, cv::Mat& cameraMatrix, cv::Mat& distCoeffs); // 读取相机参数

@@ -21,6 +21,9 @@ endif()
 #库名称
 set(LIBS_OpenCV ${OpenCV_LIBS})
 
+#添加宏定义
+add_definitions(-DROOT=\"/home/mozijun/Mycode_c/pnx\")
+
 #可执行文件
 set(EXEC_AIM auto_aim)
 set(EXECUTABLE_OUTPUT_PATH ${EXEC_PATH})

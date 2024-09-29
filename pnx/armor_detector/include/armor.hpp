@@ -11,5 +11,6 @@ struct Armor {
     cv::Mat position; // 装甲板位置(4*4矩阵表示，包括位置和旋转矩阵)
     double probability; 
     PnPSolver pnp_solver; // PnP解算器
+    int64 frame_id; // 帧编号
 };
 #endif
