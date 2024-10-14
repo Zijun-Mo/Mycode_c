@@ -9,5 +9,6 @@ set(SRC_PATH ${CMAKE_CURRENT_SOURCE_DIR}/src)
 # 链接源文件
 target_sources(${EXEC_AIM} PRIVATE ${SRC_PATH}/detector.cpp
                                    ${SRC_PATH}/number_classifier.cpp
-                                   ${SRC_PATH}/pnp_solver.cpp)
+                                   ${SRC_PATH}/pnp_solver.cpp
+                                   ${SRC_PATH}/armor.cpp)
 target_include_directories(${EXEC_AIM} PRIVATE ${HEAD_PATH})

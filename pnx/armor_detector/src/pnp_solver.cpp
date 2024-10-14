@@ -17,32 +17,18 @@ PnPSolver::PnPSolver() {
         cv::Point3f(-0.0635, 0.0625, 0.0) 
     };// 世界坐标系中的四个点
 }
-// 拷贝赋值运算符
-PnPSolver& PnPSolver::operator=(const PnPSolver& other) {
-    if (this == &other) {
-        return *this; // 防止自我赋值
-    }
-    l_points = other.l_points;
-    s_points = other.s_points;
-    objectPoints = other.objectPoints;
-    rvec = other.rvec.clone();
-    tvec = other.tvec.clone();
-    rotationMatrix = other.rotationMatrix.clone();
-    transformMatrix = other.transformMatrix.clone();
-    cameraMatrix = other.cameraMatrix.clone();
-    distCoeffs = other.distCoeffs.clone();
-    success = other.success;
-    return *this;
-}
 // PnP解算器函数
 cv::Mat PnPSolver::solvePnPWithIPPE(const std::vector<cv::Point2f>& imagePoints, const std::string& filename, const bool issmall)
 {
-    if(issmall){ 
-        objectPoints = s_points; 
-    }
-    else{
-        objectPoints = l_points; 
-    }
+    if(issmall) objectPoints = s_points; 
+    else objectPoints = l_points; 
+    // 重置变量
+    rvec = cv::Mat();
+    tvec = cv::Mat();
+    rotationMatrix = cv::Mat();
+    transformMatrix = cv::Mat();
+    success = false; 
+
     if (!readCameraParameters(filename, cameraMatrix, distCoeffs)) {
         std::cerr << "读取相机参数失败" << std::endl;
     }
@@ -81,19 +67,27 @@ bool PnPSolver::readCameraParameters(const std::string& filename, cv::Mat& camer
 }
 
 // 将世界坐标系的点转换为图像坐标系的点
-cv::Point2f PnPSolver::worldToImage(const cv::Point3f& worldPoint) {
+std::vector<cv::Point2f> worldToImage(const std::vector<cv::Point3f>& objectPoints, const cv::Mat& ex_mat, const PnPSolver& pnp) {
+    // 从外参矩阵中提取旋转矩阵和平移向量
+    cv::Mat rotationMatrix = ex_mat(cv::Rect(0, 0, 3, 3));
+    cv::Mat tvec = ex_mat(cv::Rect(3, 0, 1, 3));
+
+    // 将旋转矩阵转换为旋转向量
+    cv::Mat rvec;
+    cv::Rodrigues(rotationMatrix, rvec);
+
+    // 获取相机内参和畸变系数
+    cv::Mat cameraMatrix = pnp.cameraMatrix;
+    cv::Mat distCoeffs = pnp.distCoeffs;
+
     // 检查矩阵是否为空
     if (rvec.empty() || tvec.empty() || cameraMatrix.empty() || distCoeffs.empty()) {
         throw std::runtime_error("相机参数或PnP解算结果未初始化");
     }
-    std::vector<cv::Point3f> objectPoints = { worldPoint };
+
+    // 将世界坐标系的点转换为图像坐标系的点
     std::vector<cv::Point2f> imagePoints;
     cv::projectPoints(objectPoints, rvec, tvec, cameraMatrix, distCoeffs, imagePoints);
-    return imagePoints[0];
-}
-// 更新外参的函数
-void PnPSolver::updateExtrinsic(const double& x, const double& y, const double& z) {
-    tvec.at<double>(0) = x;
-    tvec.at<double>(1) = y;
-    tvec.at<double>(2) = z;
+
+    return imagePoints;
 }

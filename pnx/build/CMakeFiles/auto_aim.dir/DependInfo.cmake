@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/mozijun/Mycode_c/pnx/armor_detector/src/armor.cpp" "CMakeFiles/auto_aim.dir/armor_detector/src/armor.cpp.o" "gcc" "CMakeFiles/auto_aim.dir/armor_detector/src/armor.cpp.o.d"
   "/home/mozijun/Mycode_c/pnx/armor_detector/src/detector.cpp" "CMakeFiles/auto_aim.dir/armor_detector/src/detector.cpp.o" "gcc" "CMakeFiles/auto_aim.dir/armor_detector/src/detector.cpp.o.d"
   "/home/mozijun/Mycode_c/pnx/armor_detector/src/number_classifier.cpp" "CMakeFiles/auto_aim.dir/armor_detector/src/number_classifier.cpp.o" "gcc" "CMakeFiles/auto_aim.dir/armor_detector/src/number_classifier.cpp.o.d"
   "/home/mozijun/Mycode_c/pnx/armor_detector/src/pnp_solver.cpp" "CMakeFiles/auto_aim.dir/armor_detector/src/pnp_solver.cpp.o" "gcc" "CMakeFiles/auto_aim.dir/armor_detector/src/pnp_solver.cpp.o.d"

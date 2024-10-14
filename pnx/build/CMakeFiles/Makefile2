@@ -116,12 +116,12 @@ armor_tracker/clean:
 CMakeFiles/auto_aim.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/auto_aim.dir/build.make CMakeFiles/auto_aim.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/auto_aim.dir/build.make CMakeFiles/auto_aim.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/mozijun/Mycode_c/pnx/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target auto_aim"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/mozijun/Mycode_c/pnx/build/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target auto_aim"
 .PHONY : CMakeFiles/auto_aim.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/auto_aim.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/mozijun/Mycode_c/pnx/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/mozijun/Mycode_c/pnx/build/CMakeFiles 7
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/auto_aim.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/mozijun/Mycode_c/pnx/build/CMakeFiles 0
 .PHONY : CMakeFiles/auto_aim.dir/rule

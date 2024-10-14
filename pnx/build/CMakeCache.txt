@@ -218,15 +218,6 @@ CMAKE_STRIP:FILEPATH=/usr/bin/strip
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
-//Value Computed by CMake
-MAIN_BINARY_DIR:STATIC=/home/mozijun/Mycode_c/pnx/build/main
-
-//Value Computed by CMake
-MAIN_IS_TOP_LEVEL:STATIC=OFF
-
-//Value Computed by CMake
-MAIN_SOURCE_DIR:STATIC=/home/mozijun/Mycode_c/pnx/main
-
 //The directory containing a CMake configuration file for OpenCV.
 OpenCV_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/opencv4
 

@@ -1,7 +1,8 @@
-#include <opencv2/opencv.hpp>
 #include <iostream>
 #include <vector>
 #include <chrono>
+#include <map>
+#include <opencv2/opencv.hpp>
 #include "number_classifier.hpp"
 #include "pnp_solver.hpp"
 #include "detector.hpp"
@@ -13,11 +14,12 @@ Armor armor; // 装甲板结构体
 
 // 函数声明
 bool readVideo(const std::string& filename, cv::VideoCapture& cap); // 从文件中读取视频
-void Draw(cv::Mat& frame, const std::vector<cv::Point2f>& mergedRect, const Armor& armor); // 绘制矩形在原图上
+void Draw(cv::Mat& frame, const Armor& armor); // 绘制矩形在原图上
 
 int64 start, latest_num, frame_id;
 // 初始化跟踪器列表
-std::vector<Tracker> trackers;
+std::map<std::string, Tracker> trackers;
+
 int main() {
     // 打开视频文件
     cv::VideoCapture cap;
@@ -34,7 +36,8 @@ int main() {
     // 创建视频写入对象
     cv::VideoWriter video(std::string(ROOT) + "/img_output/output_video.mp4", cv::VideoWriter::fourcc('a','v','c','1'), fps, cv::Size(frame_width, frame_height));
     start = cv::getTickCount(); 
-    cv::Mat frame;
+    cv::Mat frame; 
+    PnPSolver pnp_solver; // 创建pnp解算对象
 
     while (cap.read(frame)) {
         frame_id ++; 
@@ -45,9 +48,10 @@ int main() {
         // cv::merge(channels, frame); 
         // 将图像转换为灰度图像并进行二值化
         Detector detector; 
+        std::map<std::string, std::vector<Armor>> armors;
         cv::Mat binaryImg = detector.convertToAdaptiveBinary(frame, clahe, 40);
         // 处理轮廓并获取最小外接可旋转矩形
-        std::vector<cv::RotatedRect> rectangles = detector.processContours(binaryImg, frame); 
+        std::vector<cv::RotatedRect> rectangles = detector.processContours(); 
 
         // 判断两个旋转矩形是否相似
         for (int i = 0; i < rectangles.size(); i++) {
@@ -61,84 +65,81 @@ int main() {
                                     : detector.mergeSimilarRects(rectangles[j], rectangles[i]); 
                     // 将四边形内容投影为长方形
                     cv::Mat squareImg; 
-                    squareImg = issmall ? detector.warpToRectangle(frame, mergedRect, 32, 28)(cv::Rect(6, 0, 20, 28)) 
-                                        : detector.warpToRectangle(frame, mergedRect, 54, 28)(cv::Rect(17, 0, 20, 28));
+                    squareImg = issmall ? detector.warpToRectangle(frame, mergedRect, 34, 28)(cv::Rect(7, 0, 20, 28)) 
+                                        : detector.warpToRectangle(frame, mergedRect, 58, 28)(cv::Rect(19, 0, 20, 28));
                     // 数字识别
                     NumberClassifier number_classifier("mlp.onnx", "label.txt", 0.5);  
                     std::pair<std::string, double> result = number_classifier.classifyNumber(squareImg, issmall); 
-                    if(result.first == "negative") continue; 
+                    if(result.first == "negative"){
+                        // imshow("squareImg", squareImg);
+                        // cv::waitKey(200);
+                        continue; 
+                    } 
                     armor.is_small = issmall; 
                     armor.classification = result.first; 
                     armor.probability = result.second; 
                     // PnP解算相机外参
-                    armor.position = armor.pnp_solver.solvePnPWithIPPE(mergedRect, std::string(ROOT) + "/input/2BDFA1701242.yaml", issmall); 
+                    armor.ex_mat = pnp_solver.solvePnPWithIPPE(mergedRect, std::string(ROOT) + "/input/2BDFA1701242.yaml", issmall); 
                     armor.frame_id = frame_id; 
+                    armor.calculatemergedRect(); 
+                    armors[result.first].push_back(armor); 
                     // 绘制矩形在原图上
-                    Draw(frame, mergedRect, armor); 
-                    // 更新或添加跟踪器
-                    bool update = false;
-                    auto it = trackers.begin();
-                    while(it != trackers.end()) {
-                        if(isSameArmor(*it, armor) && !update) {
-                            it->update(armor); // 更新跟踪器
-                            update = true;
-                            ++it; 
-                        }
-                        else if(isSameArmor(*it, armor)) {
-                            it = trackers.erase(it);
-                        }
-                        else ++it; 
-                    }
-                    if (!update) {
-                        trackers.emplace_back(armor, 1.0 / fps); 
-                        trackers.back().pnp_solver = armor.pnp_solver; 
-                        trackers.back().num = ++latest_num; 
-                    }
+                    
                 }
             }
         }
+        // 更新跟踪器
+        for(auto& armor : armors) {
+            for(auto& armor_ : armor.second){
+                Draw(frame, armor_); 
+            }
+            if(armor.second.size() == 1){
+                if(trackers.find(armor.first) == trackers.end()) trackers[armor.first] = Tracker(armor.second[0], 1.0 / fps);
+                if(isSameArmor(trackers[armor.first], armor.second[0])) trackers[armor.first].update1(armor.second[0]); 
+                else trackers[armor.first] = Tracker(armor.second[0], 1.0 / fps); 
+            }
+            if(armor.second.size() == 2){
+                double yaw1 = armor.second[0].calculateYawAngle(); 
+                double yaw2 = armor.second[1].calculateYawAngle();
+                if(abs_yaw(yaw2 - yaw1) > CV_PI / 12) continue;
+                if(yaw1 > yaw2 && yaw1 - yaw2 < CV_PI / 2){
+                    auto temp = armor.second[0]; armor.second[0] = armor.second[1]; armor.second[1] = temp;
+                }
+                if(yaw1 < yaw2 && yaw2 - yaw1 > CV_PI / 2){
+                    auto temp = armor.second[0]; armor.second[0] = armor.second[1]; armor.second[1] = temp;
+                }
+                if(trackers.find(armor.first) == trackers.end()){
+                    trackers[armor.first] = Tracker(armor.second[0], 1.0 / fps); 
+                    trackers[armor.first].update1(armor.second[1]); 
+                }
+                if(isSameArmor(trackers[armor.first], armor.second[0])) trackers[armor.first].update2(armor.second[0], armor.second[1]); 
+                else{
+                    trackers[armor.first] = Tracker(armor.second[0], 1.0 / fps); 
+                    trackers[armor.first].update1(armor.second[1]); 
+                }
+            }
+        }
+        armors.clear(); 
         // 检查并删除过期的 Tracker
         auto it = trackers.begin();
         while (it != trackers.end()) {
-            if (it->isExpired(frame_id, int64(fps))) {
+            if (it->second.isExpired(frame_id, int64(fps))) {
                 it = trackers.erase(it);
-            } 
-            else {
-                it->markLost(frame_id); 
+            } else {
+                it->second.markLost(frame_id);
                 ++it;
             }
         }
         // 预测并绘制结果
         for (auto& tracker : trackers) {
-            std::cout << tracker.num << "\n";
-            std::cout << tracker.getPosition() << " "; 
-            std::cout << tracker.getVelocity() << std::endl;
-            cv::Mat prediction = tracker.predict();
-            std::cout << tracker.getPosition() << " "; 
-            std::cout << tracker.getVelocity() << std::endl;
-
-            // 将预测的世界坐标系或相机坐标系的点转换为图像坐标系的点
-            cv::Point3f worldPoint(0.0, 0.0, 0.0);
-            cv::Point2f imagePoint = tracker.pnp_solver.worldToImage(worldPoint);
-
-            // 获取图像坐标系的 x 和 y 坐标
-            cv::Rect2d predRect(imagePoint.x - 25, imagePoint.y - 25, 50, 50);
-            cv::rectangle(frame, predRect, cv::Scalar(0, 255, 0), 2);
-
-            // 获取预测位置
-            cv::Point3f position = tracker.getPosition();
-            std::string positionText = "Pos: (" + std::to_string(position.x) + ", " + std::to_string(position.y) + ", " + std::to_string(position.z) + ")";
-            cv::putText(frame, positionText, cv::Point(predRect.x, predRect.y - 10), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(255, 255, 255), 1);
-            cv::Point3f velocity = tracker.getVelocity();
-            std::string velocityText = "Vel: (" + std::to_string(velocity.x) + ", " + std::to_string(velocity.y) + ", " + std::to_string(velocity.z) + ")";
-            cv::putText(frame, velocityText, cv::Point(predRect.x, predRect.y + 10), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(255, 255, 255), 1);
-            cv::putText(frame, std::to_string(tracker.num), cv::Point(predRect.x, predRect.y + 60), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(255, 255, 255), 1);
-
-            // 如果 Tracker 丢失，绘制丢失标记
-            if (tracker.isLost()) {
-                std::string lostText = "LOST";
-                cv::putText(frame, lostText, cv::Point(predRect.x, predRect.y - 30), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(0, 0, 255), 1);
-            }
+            std::cout << tracker.first << "\n"; 
+            std::cout << tracker.second.getPosition() << " "; 
+            std::cout << tracker.second.getVelocity() << std::endl; 
+            cv::Mat prediction = tracker.second.predict(); 
+            std::cout << tracker.second.getPosition() << " "; 
+            std::cout << tracker.second.getVelocity() << std::endl; 
+            
+            
         }
         // 将处理后的帧写入视频文件
         video.write(frame); 
@@ -164,14 +165,14 @@ bool readVideo(const std::string& filename, cv::VideoCapture& cap) {
     return true;
 } 
 // 绘制矩形在原图上
-void Draw(cv::Mat& frame, const std::vector<cv::Point2f>& mergedRect, const Armor& armor) {
-    cv::putText(frame, armor.classification, mergedRect[3], cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(0, 255, 0), 2);
-    cv::putText(frame, std::to_string(armor.probability), mergedRect[2], cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(0, 255, 0), 2);
+void Draw(cv::Mat& frame, const Armor& armor) {
+    cv::putText(frame, armor.classification, armor.mergedRect[3], cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(0, 255, 0), 2);
+    cv::putText(frame, std::to_string(armor.calculateYawAngle() / CV_PI * 180), armor.mergedRect[2], cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(0, 255, 0), 2);
     for (int k = 0; k < 4; k++) {
-        cv::line(frame, mergedRect[k], mergedRect[(k + 1) % 4], cv::Scalar(255, 255, 0), 2); 
+        cv::line(frame, armor.mergedRect[k], armor.mergedRect[(k + 1) % 4], cv::Scalar(255, 255, 0), 2); 
     }
-    std::string text = "(" + std::to_string(armor.position.at<double>(0, 3)) + 
-                        ", " + std::to_string(armor.position.at<double>(1, 3)) + 
-                        ", " + std::to_string(armor.position.at<double>(2, 3)) + ")"; 
-    cv::putText(frame, text, cv::Point(mergedRect[0].x, mergedRect[0].y - 20), cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(0, 255, 0), 2); 
+    std::string text = "(" + std::to_string(armor.ex_mat.at<double>(2, 3)) + 
+                        ", " + std::to_string(armor.ex_mat.at<double>(0, 3)) + 
+                        ", " + std::to_string(-armor.ex_mat.at<double>(1, 3)) + ")"; 
+    cv::putText(frame, text, cv::Point(armor.mergedRect[0].x, armor.mergedRect[0].y - 20), cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(0, 255, 0), 2); 
 }

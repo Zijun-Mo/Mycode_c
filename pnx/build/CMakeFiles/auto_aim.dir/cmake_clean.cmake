@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "../bin/auto_aim"
   "../bin/auto_aim.pdb"
+  "CMakeFiles/auto_aim.dir/armor_detector/src/armor.cpp.o"
+  "CMakeFiles/auto_aim.dir/armor_detector/src/armor.cpp.o.d"
   "CMakeFiles/auto_aim.dir/armor_detector/src/detector.cpp.o"
   "CMakeFiles/auto_aim.dir/armor_detector/src/detector.cpp.o.d"
   "CMakeFiles/auto_aim.dir/armor_detector/src/number_classifier.cpp.o"

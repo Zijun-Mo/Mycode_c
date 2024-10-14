@@ -129,6 +129,30 @@ auto_aim/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/auto_aim.dir/build.make CMakeFiles/auto_aim.dir/build
 .PHONY : auto_aim/fast
 
+armor_detector/src/armor.o: armor_detector/src/armor.cpp.o
+.PHONY : armor_detector/src/armor.o
+
+# target to build an object file
+armor_detector/src/armor.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/auto_aim.dir/build.make CMakeFiles/auto_aim.dir/armor_detector/src/armor.cpp.o
+.PHONY : armor_detector/src/armor.cpp.o
+
+armor_detector/src/armor.i: armor_detector/src/armor.cpp.i
+.PHONY : armor_detector/src/armor.i
+
+# target to preprocess a source file
+armor_detector/src/armor.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/auto_aim.dir/build.make CMakeFiles/auto_aim.dir/armor_detector/src/armor.cpp.i
+.PHONY : armor_detector/src/armor.cpp.i
+
+armor_detector/src/armor.s: armor_detector/src/armor.cpp.s
+.PHONY : armor_detector/src/armor.s
+
+# target to generate assembly for a file
+armor_detector/src/armor.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/auto_aim.dir/build.make CMakeFiles/auto_aim.dir/armor_detector/src/armor.cpp.s
+.PHONY : armor_detector/src/armor.cpp.s
+
 armor_detector/src/detector.o: armor_detector/src/detector.cpp.o
 .PHONY : armor_detector/src/detector.o
 
@@ -258,6 +282,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... auto_aim"
+	@echo "... armor_detector/src/armor.o"
+	@echo "... armor_detector/src/armor.i"
+	@echo "... armor_detector/src/armor.s"
 	@echo "... armor_detector/src/detector.o"
 	@echo "... armor_detector/src/detector.i"
 	@echo "... armor_detector/src/detector.s"

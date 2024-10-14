@@ -8,10 +8,9 @@
 class PnPSolver {
 public:
     PnPSolver();
-    PnPSolver& operator = (const PnPSolver& other);  //重载=号
-    cv::Point2f worldToImage(const cv::Point3f& worldPoint);
+    friend std::vector<cv::Point2f> worldToImage(const std::vector<cv::Point3f>& objectPoints, const cv::Mat& ex_mat, const PnPSolver& pnp);// 世界坐标系转换到图像坐标系
     cv::Mat solvePnPWithIPPE(const std::vector<cv::Point2f>& imagePoints, const std::string& filename, const bool issmall); // PnP解算器函数
-    void updateExtrinsic(const double& x, const double& y, const double& z); // 更新外参函数
+    std::vector<cv::Point3f> calculateArmorPositions(const Tracker& tracker); // 计算装甲板位置
 
 private:
     std::vector<cv::Point3f> l_points, s_points; 
@@ -19,7 +18,6 @@ private:
     cv::Mat rvec, tvec, rotationMatrix, transformMatrix; 
     cv::Mat cameraMatrix, distCoeffs; 
     bool success; 
-    
     bool readCameraParameters(const std::string& filename, cv::Mat& cameraMatrix, cv::Mat& distCoeffs); // 读取相机参数
 };
 
