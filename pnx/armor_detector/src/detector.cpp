@@ -213,9 +213,7 @@ std::pair<cv::Point2f, cv::Point2f> Detector::findExtremePoints(const cv::Mat& r
                 // 计算沿对称轴方向的梯度
                 cv::Point2f gradientPoint = point + unitSymmetryAxis;
                 if (gradientPoint.x >= 0 && gradientPoint.x < roiImage64F.cols && 
-                    gradientPoint.y >= 0 && gradientPoint.y < roiImage64F.rows &&
-                    (roiImage64F.at<double>(gradientPoint) > mean_val * 0.2 && t > 0)||
-                    (roiImage64F.at<double>(point) > mean_val * 0.2 && t < 0)) {
+                    gradientPoint.y >= 0 && gradientPoint.y < roiImage64F.rows) {
                     double gradientIntensity = roiImage64F.at<double>(gradientPoint); 
                     double gradient = std::abs(gradientIntensity - intensity); 
 
@@ -245,10 +243,10 @@ std::pair<cv::Point2f, cv::Point2f> Detector::findExtremePoints(const cv::Mat& r
     // 计算上下角点的平均值
     cv::Point2f avgTopPoint(0, 0), avgBottomPoint(0, 0);
     for (const auto& point : topPoints) {
-        avgTopPoint += point;
+        avgTopPoint += point; 
     }
     for (const auto& point : bottomPoints) {
-        avgBottomPoint += point;
+        avgBottomPoint += point; 
     }
     if (!topPoints.empty()) {
         avgTopPoint /= static_cast<double>(topPoints.size());
@@ -256,43 +254,40 @@ std::pair<cv::Point2f, cv::Point2f> Detector::findExtremePoints(const cv::Mat& r
     if (!bottomPoints.empty()) {
         avgBottomPoint /= static_cast<double>(bottomPoints.size());
     }
-    // if(abs(rectSize.height - cv::norm(avgTopPoint - avgBottomPoint)) / rectSize.height > 0.2) {
-    //     std::cout << rectSize.height << std::endl; 
-    //     std::cout << cv::norm(avgTopPoint - avgBottomPoint) << std::endl;
-    //      // 将图像从 CV_64F 转换为 CV_8U
-    //     cv::Mat roiImage8U;
-    //     roiImage64F.convertTo(roiImage8U, CV_8U);
+    if(1) {
+         // 将图像从 CV_64F 转换为 CV_8U
+        cv::Mat roiImage8U;
+        roiImage64F.convertTo(roiImage8U, CV_8U);
 
-    //     // 将灰度图像转换为彩色图像
-    //     cv::Mat roiImageColor;
-    //     cv::cvtColor(roiImage8U, roiImageColor, cv::COLOR_GRAY2BGR);
+        // 将灰度图像转换为彩色图像
+        cv::Mat roiImageColor;
+        cv::cvtColor(roiImage8U, roiImageColor, cv::COLOR_GRAY2BGR);
 
-    //     // 绘制极值点之间的线
-    //     cv::line(roiImageColor, avgTopPoint, avgBottomPoint, cv::Scalar(0, 0, 255), 1);
+        // 绘制极值点之间的线
+        cv::line(roiImageColor, avgTopPoint, avgBottomPoint, cv::Scalar(0, 0, 255), 1);
 
-    //     // 计算方向向量的终点
-    //     cv::Point2f directionEndPoint = rectCenter + symmetryAxis * 50;
+        // 计算方向向量的终点
+        cv::Point2f directionEndPoint = rectCenter + symmetryAxis * 50;
 
 
-    //     // 边缘检测
-    //     cv::Mat edges;
-    //     cv::Canny(roiImage8U, edges, 150, 250); 
+        // 边缘检测
+        cv::Mat edges;
+        cv::Canny(roiImage8U, edges, 150, 250); 
 
-    //     // 将边缘绘制到彩色图像上
-    //     for (int y = 0; y < edges.rows; y++) {
-    //         for (int x = 0; x < edges.cols; x++) {
-    //             if (edges.at<uchar>(y, x) > 0) {
-    //                 roiImageColor.at<cv::Vec3b>(y, x) = cv::Vec3b(255, 0, 0); // 蓝色
-    //             }
-    //         }
-    //     }
+        // 将边缘绘制到彩色图像上
+        for (int y = 0; y < edges.rows; y++) {
+            for (int x = 0; x < edges.cols; x++) {
+                if (edges.at<uchar>(y, x) > 0) {
+                    roiImageColor.at<cv::Vec3b>(y, x) = cv::Vec3b(255, 0, 0); // 蓝色
+                }
+            }
+        }
 
-    //     // 绘制从质心开始的方向向量
-    //     // cv::line(roiImageColor, rectCenter, directionEndPoint, cv::Scalar(0, 255, 0), 1);
-    //     cv::imshow("roiImageColor", roiImageColor);
-    //     cv::waitKey(0);
-    // }
-    
+        // 绘制从质心开始的方向向量
+        // cv::line(roiImageColor, rectCenter, directionEndPoint, cv::Scalar(0, 255, 0), 1);
+        cv::imshow("roiImageColor", roiImageColor);
+        cv::waitKey(0);
+    }
 
     // 返回对称轴上方和下方亮度变化最大的点的平均值
     return std::make_pair(avgTopPoint, avgBottomPoint);
@@ -307,22 +302,35 @@ std::vector<cv::Point2f> Detector::mergeSimilarRects(const cv::RotatedRect& rect
     rect2.points(vertices2); 
 
     // 扩展矩形的长宽为原本的1.2倍
-    cv::Size2f expandedSize1(rect1.size.width * 1.2, rect1.size.height * 1.2);
-    cv::Size2f expandedSize2(rect2.size.width * 1.2, rect2.size.height * 1.2);
+    cv::Size2f expandedSize1(rect1.size.width * 1.2, rect1.size.height * 1.5);
+    cv::Size2f expandedSize2(rect2.size.width * 1.2, rect2.size.height * 1.5);
     cv::RotatedRect expandedRect1(rect1.center, expandedSize1, rect1.angle);
     cv::RotatedRect expandedRect2(rect2.center, expandedSize2, rect2.angle);
 
     // 获取扩展后的ROI
-    cv::Rect roi1 = expandedRect1.boundingRect();
-    cv::Rect roi2 = expandedRect2.boundingRect();
-
-    // 确保ROI在图像范围内
+    cv::Rect roi1 = expandedRect1.boundingRect(); 
+    cv::Rect roi2 = expandedRect2.boundingRect(); 
+    // 确保 ROI 在图像边界内
     roi1 &= cv::Rect(0, 0, grayImg.cols, grayImg.rows);
     roi2 &= cv::Rect(0, 0, grayImg.cols, grayImg.rows);
 
-    // 提取ROI区域
-    cv::Mat roiImage1 = grayImg(roi1);
-    cv::Mat roiImage2 = grayImg(roi2);
+    cv::Mat mask1 = cv::Mat::zeros(roi1.size(), CV_8UC1); 
+    cv::Mat mask2 = cv::Mat::zeros(roi2.size(), CV_8UC1);
+
+    std::vector<cv::Point> contour1 = {vertices1[0] - cv::Point2f(roi1.x, roi1.y), 
+                                       vertices1[1] - cv::Point2f(roi1.x, roi1.y), 
+                                       vertices1[2] - cv::Point2f(roi1.x, roi1.y), 
+                                       vertices1[3] - cv::Point2f(roi1.x, roi1.y)};
+    std::vector<cv::Point> contour2 = {vertices2[0] - cv::Point2f(roi2.x, roi2.y),
+                                       vertices2[1] - cv::Point2f(roi2.x, roi2.y),
+                                       vertices2[2] - cv::Point2f(roi2.x, roi2.y),
+                                       vertices2[3] - cv::Point2f(roi2.x, roi2.y)};
+    cv::fillConvexPoly(mask1, contour1, cv::Scalar(255));
+    cv::fillConvexPoly(mask2, contour2, cv::Scalar(255));
+
+    cv::Mat roiImage1, roiImage2;
+    grayImg(roi1).copyTo(roiImage1, mask1);
+    grayImg(roi2).copyTo(roiImage2, mask2); 
 
     // 检查图像是否为空
     if (roiImage1.empty() || roiImage2.empty()) {
@@ -350,9 +358,6 @@ std::vector<cv::Point2f> Detector::mergeSimilarRects(const cv::RotatedRect& rect
     std::pair<cv::Point2f, cv::Point2f> extremePoints1 = findExtremePoints(roiImage1, symmetryAxis1, rectSize1, rectcenter1, meanVal1);
     std::pair<cv::Point2f, cv::Point2f> extremePoints2 = findExtremePoints(roiImage2, symmetryAxis2, rectSize2, rectcenter2, meanVal2);
 
-    double angle1 = std::atan2(extremePoints1.second.y - extremePoints1.first.y, extremePoints1.second.x - extremePoints1.first.x);
-    double angle2 = std::atan2(extremePoints2.second.y - extremePoints2.first.y, extremePoints2.second.x - extremePoints2.first.x);
-
     // 将 ROI 中的点坐标转换为原图像中的全局坐标
     cv::Point2f topPoint1 = extremePoints1.first + cv::Point2f(roi1.x, roi1.y);
     cv::Point2f bottomPoint1 = extremePoints1.second + cv::Point2f(roi1.x, roi1.y);
@@ -370,10 +375,10 @@ std::vector<cv::Point2f> Detector::mergeSimilarRects(const cv::RotatedRect& rect
     // 沿着对称轴上下延长1倍，作为装甲板的四个顶点
     cv::Point2f center1 = (topPoint1 + bottomPoint1) / 2;
     cv::Point2f center2 = (topPoint2 + bottomPoint2) / 2;
-    cv::Point2f extendedTop1 = center1 + (topPoint1 - center1) * 3;
-    cv::Point2f extendedBottom1 = center1 + (bottomPoint1 - center1) * 3;
-    cv::Point2f extendedTop2 = center2 + (topPoint2 - center2) * 3;
-    cv::Point2f extendedBottom2 = center2 + (bottomPoint2 - center2) * 3;
+    cv::Point2f extendedTop1 = center1 + (topPoint1 - center1) * 2.4;
+    cv::Point2f extendedBottom1 = center1 + (bottomPoint1 - center1) * 2.4;
+    cv::Point2f extendedTop2 = center2 + (topPoint2 - center2) * 2.4;
+    cv::Point2f extendedBottom2 = center2 + (bottomPoint2 - center2) * 2.4;
     std::vector<cv::Point2f> armorPoints = {extendedTop1, extendedTop2, extendedBottom2, extendedBottom1};
 
     return armorPoints;

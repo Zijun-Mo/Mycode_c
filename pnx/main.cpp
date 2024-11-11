@@ -15,6 +15,7 @@ Armor armor; // 装甲板结构体
 // 函数声明
 bool readVideo(const std::string& filename, cv::VideoCapture& cap); // 从文件中读取视频
 void Draw(cv::Mat& frame, const Armor& armor); // 绘制矩形在原图上
+void Draw1(cv::Mat& frame, const Armor& armor); 
 
 int64 start, latest_num, frame_id;
 // 初始化跟踪器列表
@@ -23,7 +24,7 @@ std::map<std::string, Tracker> trackers;
 int main() {
     // 打开视频文件
     cv::VideoCapture cap;
-    if (!readVideo("test2.avi", cap)) {
+    if (!readVideo("unity_n.mp4", cap)) {
         return -1;
     }
     // 创建CLAHE对象，用于均衡亮度
@@ -41,18 +42,20 @@ int main() {
 
     while (cap.read(frame)) {
         frame_id ++; 
+        std::cout << frame_id << std::endl;
         // 翻转蓝色和红色通道(可选,在敌方为蓝方时需要)
-        // std::vector<cv::Mat> channels;
-        // cv::split(frame, channels);
-        // std::swap(channels[0], channels[2]);
+        // std::vector<cv::Mat> channels; 
+        // cv::split(frame, channels); 
+        // std::swap(channels[0], channels[2]); 
         // cv::merge(channels, frame); 
         // 将图像转换为灰度图像并进行二值化
         Detector detector; 
         std::map<std::string, std::vector<Armor>> armors;
-        cv::Mat binaryImg = detector.convertToAdaptiveBinary(frame, clahe, 40);
+        cv::Mat binaryImg = detector.convertToAdaptiveBinary(frame, clahe, 190);
+        // imshow("binaryImg", binaryImg);
+        // cv::waitKey(200);
         // 处理轮廓并获取最小外接可旋转矩形
         std::vector<cv::RotatedRect> rectangles = detector.processContours(); 
-
         // 判断两个旋转矩形是否相似
         for (int i = 0; i < rectangles.size(); i++) {
             for (int j = i + 1; j < rectangles.size(); j++) {
@@ -77,14 +80,17 @@ int main() {
                     } 
                     armor.is_small = issmall; 
                     armor.classification = result.first; 
-                    armor.probability = result.second; 
+                    armor.probability = result.second;  
                     // PnP解算相机外参
                     armor.ex_mat = pnp_solver.solvePnPWithIPPE(mergedRect, std::string(ROOT) + "/input/2BDFA1701242.yaml", issmall); 
                     armor.frame_id = frame_id; 
                     armor.calculatemergedRect(); 
                     armors[result.first].push_back(armor); 
                     // 绘制矩形在原图上
-                    
+                    std::vector<cv::Point2f> points = armor.mergedRect;
+                    for (int k = 0; k < 4; k++) {
+                        cv::line(frame, points[k], points[(k + 1) % 4], cv::Scalar(0, 255, 0), 3); 
+                    }
                 }
             }
         }
@@ -118,6 +124,7 @@ int main() {
                     trackers[armor.first].update1(armor.second[1]); 
                 }
             }
+            
         }
         armors.clear(); 
         // 检查并删除过期的 Tracker
@@ -131,21 +138,31 @@ int main() {
             }
         }
         // 预测并绘制结果
-        for (auto& tracker : trackers) {
-            std::cout << tracker.first << "\n"; 
-            std::cout << tracker.second.getPosition() << " "; 
-            std::cout << tracker.second.getVelocity() << std::endl; 
-            cv::Mat prediction = tracker.second.predict(); 
-            std::cout << tracker.second.getPosition() << " "; 
-            std::cout << tracker.second.getVelocity() << std::endl; 
-            
-            
-        }
+        // for (auto& tracker : trackers) {
+        //     std::cout << tracker.first << "\n"; 
+        //     std::cout << tracker.second.getPosition() << " "; 
+        //     std::cout << tracker.second.getVelocity() << std::endl; 
+        //     cv::Mat prediction = tracker.second.predict(); 
+        //     std::cout << tracker.second.getPosition() << " "; 
+        //     std::cout << tracker.second.getVelocity() << std::endl; 
+        //     std::vector<Armor> armors = calculateArmorPositions(tracker.second); 
+        //     for(auto& armor : armors){
+        //         Draw1(frame, armor); 
+        //     }
+        //     std::string text = "(" + std::to_string(tracker.second.getPosition().x) + 
+        //                 ", " + std::to_string(tracker.second.getPosition().y) + 
+        //                 ", " + std::to_string(tracker.second.getPosition().z) + ")";
+        //     cv::putText(frame, text, cv::Point(0, 20), cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(0, 255, 0), 2); 
+        //     text = std::to_string(armors[0].calculateYawAngle() / CV_PI * 180); 
+        //     cv::putText(frame, text, cv::Point(0, 50), cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(0, 255, 0), 2);
+        //     text = std::to_string(tracker.second.getR().first) + " " + std::to_string(tracker.second.getR().second);
+        //     cv::putText(frame, text, cv::Point(0, 80), cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(0, 255, 0), 2);
+        // }
+        cv::putText(frame, std::to_string(frame_id), cv::Point(frame_width - 100, 20), cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(0, 255, 0), 2);
         // 将处理后的帧写入视频文件
         video.write(frame); 
     }
     std::cout << (cv::getTickCount() - start) / cv::getTickFrequency() << "\n"; 
-    
     cap.release();
     video.release();
     cv::destroyAllWindows();
@@ -175,4 +192,9 @@ void Draw(cv::Mat& frame, const Armor& armor) {
                         ", " + std::to_string(armor.ex_mat.at<double>(0, 3)) + 
                         ", " + std::to_string(-armor.ex_mat.at<double>(1, 3)) + ")"; 
     cv::putText(frame, text, cv::Point(armor.mergedRect[0].x, armor.mergedRect[0].y - 20), cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(0, 255, 0), 2); 
+}
+void Draw1(cv::Mat& frame, const Armor& armor) {
+    for (int k = 0; k < 4; k++) {
+        cv::line(frame, armor.mergedRect[k], armor.mergedRect[(k + 1) % 4], cv::Scalar(0, 255, 255), 2); 
+    }
 }

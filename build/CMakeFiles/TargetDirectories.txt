@@ -1,2 +1,0 @@
-/home/mozijun/Mycode_c/build/CMakeFiles/edit_cache.dir
-/home/mozijun/Mycode_c/build/CMakeFiles/rebuild_cache.dir

@@ -29,7 +29,7 @@ cv::Mat PnPSolver::solvePnPWithIPPE(const std::vector<cv::Point2f>& imagePoints,
     transformMatrix = cv::Mat();
     success = false; 
 
-    if (!readCameraParameters(filename, cameraMatrix, distCoeffs)) {
+    if (!readCameraParameters(filename)) {
         std::cerr << "读取相机参数失败" << std::endl;
     }
     success = cv::solvePnP(objectPoints, imagePoints, cameraMatrix, distCoeffs, rvec, tvec, false, cv::SOLVEPNP_IPPE); 
@@ -48,7 +48,7 @@ cv::Mat PnPSolver::solvePnPWithIPPE(const std::vector<cv::Point2f>& imagePoints,
     return transformMatrix;
 }
 // 读取相机参数的函数
-bool PnPSolver::readCameraParameters(const std::string& filename, cv::Mat& cameraMatrix, cv::Mat& distCoeffs) {
+bool PnPSolver::readCameraParameters(const std::string& filename) {
     // 打开YAML文件
     cv::FileStorage fs(filename, cv::FileStorage::READ);
     if (!fs.isOpened()) {

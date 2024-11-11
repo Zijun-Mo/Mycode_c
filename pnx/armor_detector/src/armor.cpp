@@ -34,6 +34,7 @@ double Armor::calculateYawAngle() const {
 }
 void Armor::calculatemergedRect() {
     PnPSolver pnp_solver;
+    pnp_solver.readCameraParameters(std::string(ROOT) + "/input/2BDFA1701242.yaml"); 
     std::vector<cv::Point3f> l_points = {
         cv::Point3f(-0.135, -0.0635, 0.0), 
         cv::Point3f(0.135, -0.0635, 0.0), 

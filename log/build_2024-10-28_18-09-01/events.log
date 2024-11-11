@@ -1,0 +1,240 @@
+[0.000000] (-) TimerEvent: {}
+[0.000306] (-) JobUnselected: {'identifier': 'AUTO_AIM'}
+[0.000507] (cpp_pubsub) JobQueued: {'identifier': 'cpp_pubsub', 'dependencies': OrderedDict()}
+[0.000584] (cpp_pubsub) JobStarted: {'identifier': 'cpp_pubsub'}
+[0.009824] (cpp_pubsub) JobProgress: {'identifier': 'cpp_pubsub', 'progress': 'cmake'}
+[0.010121] (cpp_pubsub) Command: {'cmd': ['/usr/bin/cmake', '/home/mozijun/Mycode_c/ros_test/src/cpp_pubsub', '-DCMAKE_INSTALL_PREFIX=/home/mozijun/Mycode_c/install/cpp_pubsub'], 'cwd': '/home/mozijun/Mycode_c/build/cpp_pubsub', 'env': OrderedDict([('SHELL', '/bin/bash'), ('ROS_VERSION', '2'), ('COLORTERM', 'truecolor'), ('WSL2_GUI_APPS_ENABLED', '1'), ('TERM_PROGRAM_VERSION', '1.94.2'), ('WSL_DISTRO_NAME', 'Ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('ROSDISTRO_INDEX_URL', 'https://mirrors.tuna.tsinghua.edu.cn/rosdistro/index-v4.yaml'), ('NAME', 'LAPTOP-IINQGEIQ'), ('PWD', '/home/mozijun/Mycode_c/build/cpp_pubsub'), ('LOGNAME', 'mozijun'), ('ROS_DOMAIN_ID', '0'), ('VSCODE_GIT_ASKPASS_NODE', '/home/mozijun/.vscode-server/bin/384ff7382de624fb94dbaf6da11977bba1ecd427/node'), ('MOTD_SHOWN', 'update-motd'), ('ALLUSERSPROFILE', '/opt/MVS/MVFG'), ('HOME', '/home/mozijun'), ('LANG', 'C.UTF-8'), ('WSL_INTEROP', '/run/WSL/539_interop'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('WAYLAND_DISPLAY', 'wayland-0'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('GIT_ASKPASS', '/home/mozijun/.vscode-server/bin/384ff7382de624fb94dbaf6da11977bba1ecd427/extensions/git/dist/askpass.sh'), ('MVCAM_GENICAM_CLPROTOCOL', '/opt/MVS/lib/CLProtocol'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('TERM', 'xterm-256color'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'mozijun'), ('MVCAM_SDK_PATH', '/opt/MVS'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-226adadee0.sock'), ('DISPLAY', ':0'), ('SHLVL', '3'), ('MVCAM_COMMON_RUNENV', '/opt/MVS/lib'), ('LD_LIBRARY_PATH', '/opt/MVS/lib/64:/opt/MVS/lib/32:/opt/MVS/lib/64:/opt/MVS/lib/32:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/opt/MVS/lib/64:/opt/MVS/lib/32:/opt/MVS/lib/64:/opt/MVS/lib/32:'), ('XDG_RUNTIME_DIR', '/run/user/1000/'), ('ROS_LOCALHOST_ONLY', '0'), ('WSLENV', 'VSCODE_WSL_EXT_LOCATION/up'), ('VSCODE_GIT_ASKPASS_MAIN', '/home/mozijun/.vscode-server/bin/384ff7382de624fb94dbaf6da11977bba1ecd427/extensions/git/dist/askpass-main.js'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PATH', '/home/mozijun/.vscode-server/bin/384ff7382de624fb94dbaf6da11977bba1ecd427/bin/remote-cli:/home/mozijun/.local/bin:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Python38/Scripts/:/mnt/c/Python38/:/mnt/c/Users/jun/Downloads/x86_64-8.1.0-release-win32-seh-rt_v6-rev0/mingw64/bin:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/usbipd-win/:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Program Files/CMake/bin:/mnt/c/ProgramData/chocolatey/lib/tinyxml2/lib:/mnt/c/ProgramData/chocolatey/lib/bullet/lib:/mnt/c/ProgramData/chocolatey/lib/cunit/lib:/mnt/c/Program Files/Graphviz/bin:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/dev/ros2_humble/setup.ps1:/mnt/c/Program Files/Unity Hub/Unity Hub.exe:/mnt/c/Program Files/Git LFS:/mnt/c/Program Files/Git/cmd:/mnt/c/Users/jun/AppData/Local/Microsoft/WindowsApps:/mnt/c/servers/x86_64-8.1.0-release-win32-seh-rt_v6-rev0/mingw64/bin:/mnt/c/Windows/system32:/mnt/c/Users/jun/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Program Files/OpenSSL-Win64/bin:/mnt/c/xmllint/bin:/mnt/c/opencv/x64/vc16/bin:/mnt/c/Program Files/CMake/bin:/snap/bin:/home/mozijun/.local/bin:/home/mozijun/.local/bin'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('HOSTTYPE', 'x86_64'), ('PULSE_SERVER', 'unix:/mnt/wslg/PulseServer'), ('ROS_DISTRO', 'humble'), ('TERM_PROGRAM', 'vscode'), ('VSCODE_IPC_HOOK_CLI', '/run/user/1000/vscode-ipc-a834c643-d0b4-42d8-8bcc-cecdc2efe2d6.sock'), ('_', '/usr/bin/env'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[0.098940] (-) TimerEvent: {}
+[0.199670] (-) TimerEvent: {}
+[0.201040] (cpp_pubsub) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.300148] (-) TimerEvent: {}
+[0.401062] (-) TimerEvent: {}
+[0.501974] (-) TimerEvent: {}
+[0.603031] (-) TimerEvent: {}
+[0.704127] (-) TimerEvent: {}
+[0.709857] (cpp_pubsub) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[0.808512] (-) TimerEvent: {}
+[0.913340] (-) TimerEvent: {}
+[0.915071] (cpp_pubsub) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[1.014096] (-) TimerEvent: {}
+[1.040233] (cpp_pubsub) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[1.046859] (cpp_pubsub) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[1.047867] (cpp_pubsub) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[1.048543] (cpp_pubsub) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[1.051940] (cpp_pubsub) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[1.114930] (-) TimerEvent: {}
+[1.193269] (cpp_pubsub) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[1.200725] (cpp_pubsub) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[1.201156] (cpp_pubsub) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[1.201374] (cpp_pubsub) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[1.208131] (cpp_pubsub) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.10 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[1.215591] (-) TimerEvent: {}
+[1.316158] (-) TimerEvent: {}
+[1.355225] (cpp_pubsub) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter \n'}
+[1.416974] (-) TimerEvent: {}
+[1.445981] (cpp_pubsub) StdoutLine: {'line': b'-- Found rclcpp: 16.0.10 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[1.517272] (-) TimerEvent: {}
+[1.594190] (cpp_pubsub) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[1.600673] (cpp_pubsub) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[1.607572] (cpp_pubsub) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[1.617527] (-) TimerEvent: {}
+[1.621662] (cpp_pubsub) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.640226] (cpp_pubsub) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[1.686626] (cpp_pubsub) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[1.688521] (cpp_pubsub) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[1.719988] (-) TimerEvent: {}
+[1.820865] (-) TimerEvent: {}
+[1.923399] (-) TimerEvent: {}
+[2.027953] (-) TimerEvent: {}
+[2.131415] (-) TimerEvent: {}
+[2.236068] (-) TimerEvent: {}
+[2.339925] (-) TimerEvent: {}
+[2.444585] (-) TimerEvent: {}
+[2.549184] (-) TimerEvent: {}
+[2.653756] (-) TimerEvent: {}
+[2.754909] (-) TimerEvent: {}
+[2.855888] (-) TimerEvent: {}
+[2.880698] (cpp_pubsub) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  \n'}
+[2.956171] (-) TimerEvent: {}
+[3.060030] (-) TimerEvent: {}
+[3.164637] (-) TimerEvent: {}
+[3.269268] (-) TimerEvent: {}
+[3.373392] (-) TimerEvent: {}
+[3.478006] (-) TimerEvent: {}
+[3.582748] (-) TimerEvent: {}
+[3.683820] (-) TimerEvent: {}
+[3.784957] (-) TimerEvent: {}
+[3.889612] (-) TimerEvent: {}
+[3.991282] (-) TimerEvent: {}
+[4.090075] (cpp_pubsub) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/humble/include  \n'}
+[4.091442] (-) TimerEvent: {}
+[4.200126] (-) TimerEvent: {}
+[4.308977] (-) TimerEvent: {}
+[4.413168] (-) TimerEvent: {}
+[4.517841] (-) TimerEvent: {}
+[4.622463] (-) TimerEvent: {}
+[4.727071] (-) TimerEvent: {}
+[4.831683] (-) TimerEvent: {}
+[4.936269] (-) TimerEvent: {}
+[5.038526] (-) TimerEvent: {}
+[5.143071] (-) TimerEvent: {}
+[5.247671] (-) TimerEvent: {}
+[5.349967] (-) TimerEvent: {}
+[5.451677] (-) TimerEvent: {}
+[5.556256] (-) TimerEvent: {}
+[5.660825] (-) TimerEvent: {}
+[5.765456] (-) TimerEvent: {}
+[5.870077] (-) TimerEvent: {}
+[5.974662] (-) TimerEvent: {}
+[6.076709] (-) TimerEvent: {}
+[6.178614] (-) TimerEvent: {}
+[6.283238] (-) TimerEvent: {}
+[6.310136] (cpp_pubsub) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[6.321199] (cpp_pubsub) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[6.383994] (-) TimerEvent: {}
+[6.456596] (cpp_pubsub) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[6.457126] (cpp_pubsub) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[6.486444] (-) TimerEvent: {}
+[6.587861] (-) TimerEvent: {}
+[6.618230] (cpp_pubsub) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success\n'}
+[6.619527] (cpp_pubsub) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[6.688140] (-) TimerEvent: {}
+[6.728688] (cpp_pubsub) StdoutLine: {'line': b'-- Configuring done\n'}
+[6.745376] (cpp_pubsub) StdoutLine: {'line': b'-- Generating done\n'}
+[6.747578] (cpp_pubsub) StdoutLine: {'line': b'-- Build files have been written to: /home/mozijun/Mycode_c/build/cpp_pubsub\n'}
+[6.757199] (cpp_pubsub) CommandEnded: {'returncode': 0}
+[6.759523] (cpp_pubsub) JobProgress: {'identifier': 'cpp_pubsub', 'progress': 'build'}
+[6.759695] (cpp_pubsub) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/mozijun/Mycode_c/build/cpp_pubsub', '--', '-j16', '-l16'], 'cwd': '/home/mozijun/Mycode_c/build/cpp_pubsub', 'env': OrderedDict([('SHELL', '/bin/bash'), ('ROS_VERSION', '2'), ('COLORTERM', 'truecolor'), ('WSL2_GUI_APPS_ENABLED', '1'), ('TERM_PROGRAM_VERSION', '1.94.2'), ('WSL_DISTRO_NAME', 'Ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('ROSDISTRO_INDEX_URL', 'https://mirrors.tuna.tsinghua.edu.cn/rosdistro/index-v4.yaml'), ('NAME', 'LAPTOP-IINQGEIQ'), ('PWD', '/home/mozijun/Mycode_c/build/cpp_pubsub'), ('LOGNAME', 'mozijun'), ('ROS_DOMAIN_ID', '0'), ('VSCODE_GIT_ASKPASS_NODE', '/home/mozijun/.vscode-server/bin/384ff7382de624fb94dbaf6da11977bba1ecd427/node'), ('MOTD_SHOWN', 'update-motd'), ('ALLUSERSPROFILE', '/opt/MVS/MVFG'), ('HOME', '/home/mozijun'), ('LANG', 'C.UTF-8'), ('WSL_INTEROP', '/run/WSL/539_interop'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('WAYLAND_DISPLAY', 'wayland-0'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('GIT_ASKPASS', '/home/mozijun/.vscode-server/bin/384ff7382de624fb94dbaf6da11977bba1ecd427/extensions/git/dist/askpass.sh'), ('MVCAM_GENICAM_CLPROTOCOL', '/opt/MVS/lib/CLProtocol'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('TERM', 'xterm-256color'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'mozijun'), ('MVCAM_SDK_PATH', '/opt/MVS'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-226adadee0.sock'), ('DISPLAY', ':0'), ('SHLVL', '3'), ('MVCAM_COMMON_RUNENV', '/opt/MVS/lib'), ('LD_LIBRARY_PATH', '/opt/MVS/lib/64:/opt/MVS/lib/32:/opt/MVS/lib/64:/opt/MVS/lib/32:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/opt/MVS/lib/64:/opt/MVS/lib/32:/opt/MVS/lib/64:/opt/MVS/lib/32:'), ('XDG_RUNTIME_DIR', '/run/user/1000/'), ('ROS_LOCALHOST_ONLY', '0'), ('WSLENV', 'VSCODE_WSL_EXT_LOCATION/up'), ('VSCODE_GIT_ASKPASS_MAIN', '/home/mozijun/.vscode-server/bin/384ff7382de624fb94dbaf6da11977bba1ecd427/extensions/git/dist/askpass-main.js'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PATH', '/home/mozijun/.vscode-server/bin/384ff7382de624fb94dbaf6da11977bba1ecd427/bin/remote-cli:/home/mozijun/.local/bin:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Python38/Scripts/:/mnt/c/Python38/:/mnt/c/Users/jun/Downloads/x86_64-8.1.0-release-win32-seh-rt_v6-rev0/mingw64/bin:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/usbipd-win/:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Program Files/CMake/bin:/mnt/c/ProgramData/chocolatey/lib/tinyxml2/lib:/mnt/c/ProgramData/chocolatey/lib/bullet/lib:/mnt/c/ProgramData/chocolatey/lib/cunit/lib:/mnt/c/Program Files/Graphviz/bin:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/dev/ros2_humble/setup.ps1:/mnt/c/Program Files/Unity Hub/Unity Hub.exe:/mnt/c/Program Files/Git LFS:/mnt/c/Program Files/Git/cmd:/mnt/c/Users/jun/AppData/Local/Microsoft/WindowsApps:/mnt/c/servers/x86_64-8.1.0-release-win32-seh-rt_v6-rev0/mingw64/bin:/mnt/c/Windows/system32:/mnt/c/Users/jun/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Program Files/OpenSSL-Win64/bin:/mnt/c/xmllint/bin:/mnt/c/opencv/x64/vc16/bin:/mnt/c/Program Files/CMake/bin:/snap/bin:/home/mozijun/.local/bin:/home/mozijun/.local/bin'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('HOSTTYPE', 'x86_64'), ('PULSE_SERVER', 'unix:/mnt/wslg/PulseServer'), ('ROS_DISTRO', 'humble'), ('TERM_PROGRAM', 'vscode'), ('VSCODE_IPC_HOOK_CLI', '/run/user/1000/vscode-ipc-a834c643-d0b4-42d8-8bcc-cecdc2efe2d6.sock'), ('_', '/usr/bin/env'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[6.788461] (-) TimerEvent: {}
+[6.795360] (cpp_pubsub) StderrLine: {'line': b"gmake[1]: Warning: File 'CMakeFiles/Makefile2' has modification time 5.9 s in the future\n"}
+[6.797352] (cpp_pubsub) StderrLine: {'line': b"gmake[2]: Warning: File 'CMakeFiles/listener.dir/flags.make' has modification time 5.9 s in the future\n"}
+[6.797627] (cpp_pubsub) StderrLine: {'line': b"gmake[2]: Warning: File 'CMakeFiles/talker.dir/flags.make' has modification time 5.9 s in the future\n"}
+[6.807739] (cpp_pubsub) StderrLine: {'line': b'gmake[2]: warning:  Clock skew detected.  Your build may be incomplete.\n'}
+[6.808050] (cpp_pubsub) StderrLine: {'line': b'gmake[2]: warning:  Clock skew detected.  Your build may be incomplete.\n'}
+[6.809582] (cpp_pubsub) StderrLine: {'line': b"gmake[2]: Warning: File 'CMakeFiles/talker.dir/flags.make' has modification time 5.9 s in the future\n"}
+[6.809772] (cpp_pubsub) StderrLine: {'line': b"gmake[2]: Warning: File 'CMakeFiles/listener.dir/flags.make' has modification time 5.9 s in the future\n"}
+[6.821039] (cpp_pubsub) StdoutLine: {'line': b'[ 25%] \x1b[32mBuilding CXX object CMakeFiles/talker.dir/src/publisher_member_function.cpp.o\x1b[0m\n'}
+[6.821399] (cpp_pubsub) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/listener.dir/src/subscriber_member_function.cpp.o\x1b[0m\n'}
+[6.888884] (-) TimerEvent: {}
+[6.990671] (-) TimerEvent: {}
+[7.091323] (-) TimerEvent: {}
+[7.193923] (-) TimerEvent: {}
+[7.295310] (-) TimerEvent: {}
+[7.396165] (-) TimerEvent: {}
+[7.497469] (-) TimerEvent: {}
+[7.598892] (-) TimerEvent: {}
+[7.699576] (-) TimerEvent: {}
+[7.800365] (-) TimerEvent: {}
+[7.904975] (-) TimerEvent: {}
+[8.009625] (-) TimerEvent: {}
+[8.114189] (-) TimerEvent: {}
+[8.216304] (-) TimerEvent: {}
+[8.316987] (-) TimerEvent: {}
+[8.421581] (-) TimerEvent: {}
+[8.526163] (-) TimerEvent: {}
+[8.627487] (-) TimerEvent: {}
+[8.728116] (-) TimerEvent: {}
+[8.828759] (-) TimerEvent: {}
+[8.933235] (-) TimerEvent: {}
+[9.037668] (-) TimerEvent: {}
+[9.142213] (-) TimerEvent: {}
+[9.246919] (-) TimerEvent: {}
+[9.351486] (-) TimerEvent: {}
+[9.455929] (-) TimerEvent: {}
+[9.560410] (-) TimerEvent: {}
+[9.665017] (-) TimerEvent: {}
+[9.769797] (-) TimerEvent: {}
+[9.874281] (-) TimerEvent: {}
+[9.978717] (-) TimerEvent: {}
+[10.081973] (-) TimerEvent: {}
+[10.186620] (-) TimerEvent: {}
+[10.287439] (-) TimerEvent: {}
+[10.392093] (-) TimerEvent: {}
+[10.496627] (-) TimerEvent: {}
+[10.601289] (-) TimerEvent: {}
+[10.705821] (-) TimerEvent: {}
+[10.810414] (-) TimerEvent: {}
+[10.914929] (-) TimerEvent: {}
+[11.019495] (-) TimerEvent: {}
+[11.123989] (-) TimerEvent: {}
+[11.228456] (-) TimerEvent: {}
+[11.332945] (-) TimerEvent: {}
+[11.437500] (-) TimerEvent: {}
+[11.538261] (-) TimerEvent: {}
+[11.639906] (-) TimerEvent: {}
+[11.657675] (cpp_pubsub) StdoutLine: {'line': b'[ 75%] \x1b[32m\x1b[1mLinking CXX executable talker\x1b[0m\n'}
+[11.741195] (-) TimerEvent: {}
+[11.842100] (-) TimerEvent: {}
+[11.917265] (cpp_pubsub) StderrLine: {'line': b'gmake[2]: warning:  Clock skew detected.  Your build may be incomplete.\n'}
+[11.927172] (cpp_pubsub) StdoutLine: {'line': b'[ 75%] Built target talker\n'}
+[11.942751] (-) TimerEvent: {}
+[12.043792] (-) TimerEvent: {}
+[12.152068] (-) TimerEvent: {}
+[12.253074] (-) TimerEvent: {}
+[12.354228] (-) TimerEvent: {}
+[12.461310] (-) TimerEvent: {}
+[12.565854] (-) TimerEvent: {}
+[12.666354] (-) TimerEvent: {}
+[12.770245] (-) TimerEvent: {}
+[12.872725] (-) TimerEvent: {}
+[12.973783] (-) TimerEvent: {}
+[13.075676] (-) TimerEvent: {}
+[13.179977] (-) TimerEvent: {}
+[13.284354] (-) TimerEvent: {}
+[13.389212] (-) TimerEvent: {}
+[13.493877] (-) TimerEvent: {}
+[13.598231] (-) TimerEvent: {}
+[13.702514] (-) TimerEvent: {}
+[13.805201] (-) TimerEvent: {}
+[13.909673] (-) TimerEvent: {}
+[14.014016] (-) TimerEvent: {}
+[14.118469] (-) TimerEvent: {}
+[14.222717] (-) TimerEvent: {}
+[14.327037] (-) TimerEvent: {}
+[14.431712] (-) TimerEvent: {}
+[14.536009] (-) TimerEvent: {}
+[14.640266] (-) TimerEvent: {}
+[14.742528] (-) TimerEvent: {}
+[14.844480] (-) TimerEvent: {}
+[14.948892] (-) TimerEvent: {}
+[15.053161] (-) TimerEvent: {}
+[15.155973] (-) TimerEvent: {}
+[15.259162] (-) TimerEvent: {}
+[15.363617] (-) TimerEvent: {}
+[15.468288] (-) TimerEvent: {}
+[15.569321] (-) TimerEvent: {}
+[15.574746] (cpp_pubsub) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable listener\x1b[0m\n'}
+[15.669792] (-) TimerEvent: {}
+[15.774410] (-) TimerEvent: {}
+[15.878945] (-) TimerEvent: {}
+[15.976223] (cpp_pubsub) StderrLine: {'line': b'gmake[2]: warning:  Clock skew detected.  Your build may be incomplete.\n'}
+[15.979286] (-) TimerEvent: {}
+[15.984597] (cpp_pubsub) StdoutLine: {'line': b'[100%] Built target listener\n'}
+[15.986508] (cpp_pubsub) StderrLine: {'line': b'gmake[1]: warning:  Clock skew detected.  Your build may be incomplete.\n'}
+[15.997096] (cpp_pubsub) CommandEnded: {'returncode': 0}
+[16.039971] (cpp_pubsub) JobProgress: {'identifier': 'cpp_pubsub', 'progress': 'install'}
+[16.048366] (cpp_pubsub) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/mozijun/Mycode_c/build/cpp_pubsub'], 'cwd': '/home/mozijun/Mycode_c/build/cpp_pubsub', 'env': OrderedDict([('SHELL', '/bin/bash'), ('ROS_VERSION', '2'), ('COLORTERM', 'truecolor'), ('WSL2_GUI_APPS_ENABLED', '1'), ('TERM_PROGRAM_VERSION', '1.94.2'), ('WSL_DISTRO_NAME', 'Ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('ROSDISTRO_INDEX_URL', 'https://mirrors.tuna.tsinghua.edu.cn/rosdistro/index-v4.yaml'), ('NAME', 'LAPTOP-IINQGEIQ'), ('PWD', '/home/mozijun/Mycode_c/build/cpp_pubsub'), ('LOGNAME', 'mozijun'), ('ROS_DOMAIN_ID', '0'), ('VSCODE_GIT_ASKPASS_NODE', '/home/mozijun/.vscode-server/bin/384ff7382de624fb94dbaf6da11977bba1ecd427/node'), ('MOTD_SHOWN', 'update-motd'), ('ALLUSERSPROFILE', '/opt/MVS/MVFG'), ('HOME', '/home/mozijun'), ('LANG', 'C.UTF-8'), ('WSL_INTEROP', '/run/WSL/539_interop'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('WAYLAND_DISPLAY', 'wayland-0'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('GIT_ASKPASS', '/home/mozijun/.vscode-server/bin/384ff7382de624fb94dbaf6da11977bba1ecd427/extensions/git/dist/askpass.sh'), ('MVCAM_GENICAM_CLPROTOCOL', '/opt/MVS/lib/CLProtocol'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('TERM', 'xterm-256color'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'mozijun'), ('MVCAM_SDK_PATH', '/opt/MVS'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-226adadee0.sock'), ('DISPLAY', ':0'), ('SHLVL', '3'), ('MVCAM_COMMON_RUNENV', '/opt/MVS/lib'), ('LD_LIBRARY_PATH', '/opt/MVS/lib/64:/opt/MVS/lib/32:/opt/MVS/lib/64:/opt/MVS/lib/32:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/opt/MVS/lib/64:/opt/MVS/lib/32:/opt/MVS/lib/64:/opt/MVS/lib/32:'), ('XDG_RUNTIME_DIR', '/run/user/1000/'), ('ROS_LOCALHOST_ONLY', '0'), ('WSLENV', 'VSCODE_WSL_EXT_LOCATION/up'), ('VSCODE_GIT_ASKPASS_MAIN', '/home/mozijun/.vscode-server/bin/384ff7382de624fb94dbaf6da11977bba1ecd427/extensions/git/dist/askpass-main.js'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PATH', '/home/mozijun/.vscode-server/bin/384ff7382de624fb94dbaf6da11977bba1ecd427/bin/remote-cli:/home/mozijun/.local/bin:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Python38/Scripts/:/mnt/c/Python38/:/mnt/c/Users/jun/Downloads/x86_64-8.1.0-release-win32-seh-rt_v6-rev0/mingw64/bin:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files/usbipd-win/:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Program Files/CMake/bin:/mnt/c/ProgramData/chocolatey/lib/tinyxml2/lib:/mnt/c/ProgramData/chocolatey/lib/bullet/lib:/mnt/c/ProgramData/chocolatey/lib/cunit/lib:/mnt/c/Program Files/Graphviz/bin:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/dev/ros2_humble/setup.ps1:/mnt/c/Program Files/Unity Hub/Unity Hub.exe:/mnt/c/Program Files/Git LFS:/mnt/c/Program Files/Git/cmd:/mnt/c/Users/jun/AppData/Local/Microsoft/WindowsApps:/mnt/c/servers/x86_64-8.1.0-release-win32-seh-rt_v6-rev0/mingw64/bin:/mnt/c/Windows/system32:/mnt/c/Users/jun/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Program Files/OpenSSL-Win64/bin:/mnt/c/xmllint/bin:/mnt/c/opencv/x64/vc16/bin:/mnt/c/Program Files/CMake/bin:/snap/bin:/home/mozijun/.local/bin:/home/mozijun/.local/bin'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('HOSTTYPE', 'x86_64'), ('PULSE_SERVER', 'unix:/mnt/wslg/PulseServer'), ('ROS_DISTRO', 'humble'), ('TERM_PROGRAM', 'vscode'), ('VSCODE_IPC_HOOK_CLI', '/run/user/1000/vscode-ipc-a834c643-d0b4-42d8-8bcc-cecdc2efe2d6.sock'), ('_', '/usr/bin/env'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[16.056224] (cpp_pubsub) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[16.057981] (cpp_pubsub) StdoutLine: {'line': b'-- Installing: /home/mozijun/Mycode_c/install/cpp_pubsub/lib/cpp_pubsub/talker\n'}
+[16.059931] (cpp_pubsub) StdoutLine: {'line': b'-- Set runtime path of "/home/mozijun/Mycode_c/install/cpp_pubsub/lib/cpp_pubsub/talker" to ""\n'}
+[16.060275] (cpp_pubsub) StdoutLine: {'line': b'-- Installing: /home/mozijun/Mycode_c/install/cpp_pubsub/lib/cpp_pubsub/listener\n'}
+[16.064654] (cpp_pubsub) StdoutLine: {'line': b'-- Set runtime path of "/home/mozijun/Mycode_c/install/cpp_pubsub/lib/cpp_pubsub/listener" to ""\n'}
+[16.066608] (cpp_pubsub) StdoutLine: {'line': b'-- Installing: /home/mozijun/Mycode_c/install/cpp_pubsub/share/ament_index/resource_index/package_run_dependencies/cpp_pubsub\n'}
+[16.067075] (cpp_pubsub) StdoutLine: {'line': b'-- Installing: /home/mozijun/Mycode_c/install/cpp_pubsub/share/ament_index/resource_index/parent_prefix_path/cpp_pubsub\n'}
+[16.067952] (cpp_pubsub) StdoutLine: {'line': b'-- Installing: /home/mozijun/Mycode_c/install/cpp_pubsub/share/cpp_pubsub/environment/ament_prefix_path.sh\n'}
+[16.068174] (cpp_pubsub) StdoutLine: {'line': b'-- Installing: /home/mozijun/Mycode_c/install/cpp_pubsub/share/cpp_pubsub/environment/ament_prefix_path.dsv\n'}
+[16.068421] (cpp_pubsub) StdoutLine: {'line': b'-- Installing: /home/mozijun/Mycode_c/install/cpp_pubsub/share/cpp_pubsub/environment/path.sh\n'}
+[16.068699] (cpp_pubsub) StdoutLine: {'line': b'-- Installing: /home/mozijun/Mycode_c/install/cpp_pubsub/share/cpp_pubsub/environment/path.dsv\n'}
+[16.068937] (cpp_pubsub) StdoutLine: {'line': b'-- Installing: /home/mozijun/Mycode_c/install/cpp_pubsub/share/cpp_pubsub/local_setup.bash\n'}
+[16.069158] (cpp_pubsub) StdoutLine: {'line': b'-- Installing: /home/mozijun/Mycode_c/install/cpp_pubsub/share/cpp_pubsub/local_setup.sh\n'}
+[16.069410] (cpp_pubsub) StdoutLine: {'line': b'-- Installing: /home/mozijun/Mycode_c/install/cpp_pubsub/share/cpp_pubsub/local_setup.zsh\n'}
+[16.069629] (cpp_pubsub) StdoutLine: {'line': b'-- Installing: /home/mozijun/Mycode_c/install/cpp_pubsub/share/cpp_pubsub/local_setup.dsv\n'}
+[16.069868] (cpp_pubsub) StdoutLine: {'line': b'-- Installing: /home/mozijun/Mycode_c/install/cpp_pubsub/share/cpp_pubsub/package.dsv\n'}
+[16.070842] (cpp_pubsub) StdoutLine: {'line': b'-- Installing: /home/mozijun/Mycode_c/install/cpp_pubsub/share/ament_index/resource_index/packages/cpp_pubsub\n'}
+[16.071535] (cpp_pubsub) StdoutLine: {'line': b'-- Installing: /home/mozijun/Mycode_c/install/cpp_pubsub/share/cpp_pubsub/cmake/cpp_pubsubConfig.cmake\n'}
+[16.071733] (cpp_pubsub) StdoutLine: {'line': b'-- Installing: /home/mozijun/Mycode_c/install/cpp_pubsub/share/cpp_pubsub/cmake/cpp_pubsubConfig-version.cmake\n'}
+[16.071951] (cpp_pubsub) StdoutLine: {'line': b'-- Installing: /home/mozijun/Mycode_c/install/cpp_pubsub/share/cpp_pubsub/package.xml\n'}
+[16.074353] (cpp_pubsub) CommandEnded: {'returncode': 0}
+[16.079697] (-) TimerEvent: {}
+[16.137575] (cpp_pubsub) JobEnded: {'identifier': 'cpp_pubsub', 'rc': 0}
+[16.138966] (-) EventReactorShutdown: {}

@@ -1,0 +1,75 @@
+[0.014s] Invoking command in '/home/mozijun/Mycode_c/build/cpp_pubsub': CMAKE_PREFIX_PATH=/opt/ros/humble _=/usr/bin/env /usr/bin/cmake /home/mozijun/Mycode_c/ros_test/src/cpp_pubsub -DCMAKE_INSTALL_PREFIX=/home/mozijun/Mycode_c/install/cpp_pubsub
+[0.201s] -- The C compiler identification is GNU 11.4.0
+[0.709s] -- The CXX compiler identification is GNU 11.4.0
+[0.915s] -- Detecting C compiler ABI info
+[1.040s] -- Detecting C compiler ABI info - done
+[1.046s] -- Check for working C compiler: /usr/bin/cc - skipped
+[1.047s] -- Detecting C compile features
+[1.048s] -- Detecting C compile features - done
+[1.051s] -- Detecting CXX compiler ABI info
+[1.193s] -- Detecting CXX compiler ABI info - done
+[1.200s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[1.201s] -- Detecting CXX compile features
+[1.201s] -- Detecting CXX compile features - done
+[1.208s] -- Found ament_cmake: 1.3.10 (/opt/ros/humble/share/ament_cmake/cmake)
+[1.355s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[1.446s] -- Found rclcpp: 16.0.10 (/opt/ros/humble/share/rclcpp/cmake)
+[1.594s] -- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[1.600s] -- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[1.607s] -- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[1.621s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.640s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.686s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[1.688s] -- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[2.880s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[4.090s] -- Found FastRTPS: /opt/ros/humble/include  
+[6.310s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[6.321s] -- Looking for pthread.h
+[6.456s] -- Looking for pthread.h - found
+[6.457s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[6.618s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[6.619s] -- Found Threads: TRUE  
+[6.728s] -- Configuring done
+[6.745s] -- Generating done
+[6.747s] -- Build files have been written to: /home/mozijun/Mycode_c/build/cpp_pubsub
+[6.757s] Invoked command in '/home/mozijun/Mycode_c/build/cpp_pubsub' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble _=/usr/bin/env /usr/bin/cmake /home/mozijun/Mycode_c/ros_test/src/cpp_pubsub -DCMAKE_INSTALL_PREFIX=/home/mozijun/Mycode_c/install/cpp_pubsub
+[6.760s] Invoking command in '/home/mozijun/Mycode_c/build/cpp_pubsub': CMAKE_PREFIX_PATH=/opt/ros/humble _=/usr/bin/env /usr/bin/cmake --build /home/mozijun/Mycode_c/build/cpp_pubsub -- -j16 -l16
+[6.795s] gmake[1]: Warning: File 'CMakeFiles/Makefile2' has modification time 5.9 s in the future
+[6.797s] gmake[2]: Warning: File 'CMakeFiles/listener.dir/flags.make' has modification time 5.9 s in the future
+[6.797s] gmake[2]: Warning: File 'CMakeFiles/talker.dir/flags.make' has modification time 5.9 s in the future
+[6.807s] gmake[2]: warning:  Clock skew detected.  Your build may be incomplete.
+[6.808s] gmake[2]: warning:  Clock skew detected.  Your build may be incomplete.
+[6.809s] gmake[2]: Warning: File 'CMakeFiles/talker.dir/flags.make' has modification time 5.9 s in the future
+[6.809s] gmake[2]: Warning: File 'CMakeFiles/listener.dir/flags.make' has modification time 5.9 s in the future
+[6.821s] [ 25%] [32mBuilding CXX object CMakeFiles/talker.dir/src/publisher_member_function.cpp.o[0m
+[6.821s] [ 50%] [32mBuilding CXX object CMakeFiles/listener.dir/src/subscriber_member_function.cpp.o[0m
+[11.657s] [ 75%] [32m[1mLinking CXX executable talker[0m
+[11.917s] gmake[2]: warning:  Clock skew detected.  Your build may be incomplete.
+[11.927s] [ 75%] Built target talker
+[15.574s] [100%] [32m[1mLinking CXX executable listener[0m
+[15.976s] gmake[2]: warning:  Clock skew detected.  Your build may be incomplete.
+[15.984s] [100%] Built target listener
+[15.986s] gmake[1]: warning:  Clock skew detected.  Your build may be incomplete.
+[15.998s] Invoked command in '/home/mozijun/Mycode_c/build/cpp_pubsub' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble _=/usr/bin/env /usr/bin/cmake --build /home/mozijun/Mycode_c/build/cpp_pubsub -- -j16 -l16
+[16.049s] Invoking command in '/home/mozijun/Mycode_c/build/cpp_pubsub': CMAKE_PREFIX_PATH=/opt/ros/humble _=/usr/bin/env /usr/bin/cmake --install /home/mozijun/Mycode_c/build/cpp_pubsub
+[16.056s] -- Install configuration: ""
+[16.057s] -- Installing: /home/mozijun/Mycode_c/install/cpp_pubsub/lib/cpp_pubsub/talker
+[16.059s] -- Set runtime path of "/home/mozijun/Mycode_c/install/cpp_pubsub/lib/cpp_pubsub/talker" to ""
+[16.060s] -- Installing: /home/mozijun/Mycode_c/install/cpp_pubsub/lib/cpp_pubsub/listener
+[16.064s] -- Set runtime path of "/home/mozijun/Mycode_c/install/cpp_pubsub/lib/cpp_pubsub/listener" to ""
+[16.066s] -- Installing: /home/mozijun/Mycode_c/install/cpp_pubsub/share/ament_index/resource_index/package_run_dependencies/cpp_pubsub
+[16.067s] -- Installing: /home/mozijun/Mycode_c/install/cpp_pubsub/share/ament_index/resource_index/parent_prefix_path/cpp_pubsub
+[16.067s] -- Installing: /home/mozijun/Mycode_c/install/cpp_pubsub/share/cpp_pubsub/environment/ament_prefix_path.sh
+[16.068s] -- Installing: /home/mozijun/Mycode_c/install/cpp_pubsub/share/cpp_pubsub/environment/ament_prefix_path.dsv
+[16.068s] -- Installing: /home/mozijun/Mycode_c/install/cpp_pubsub/share/cpp_pubsub/environment/path.sh
+[16.068s] -- Installing: /home/mozijun/Mycode_c/install/cpp_pubsub/share/cpp_pubsub/environment/path.dsv
+[16.068s] -- Installing: /home/mozijun/Mycode_c/install/cpp_pubsub/share/cpp_pubsub/local_setup.bash
+[16.069s] -- Installing: /home/mozijun/Mycode_c/install/cpp_pubsub/share/cpp_pubsub/local_setup.sh
+[16.069s] -- Installing: /home/mozijun/Mycode_c/install/cpp_pubsub/share/cpp_pubsub/local_setup.zsh
+[16.069s] -- Installing: /home/mozijun/Mycode_c/install/cpp_pubsub/share/cpp_pubsub/local_setup.dsv
+[16.069s] -- Installing: /home/mozijun/Mycode_c/install/cpp_pubsub/share/cpp_pubsub/package.dsv
+[16.070s] -- Installing: /home/mozijun/Mycode_c/install/cpp_pubsub/share/ament_index/resource_index/packages/cpp_pubsub
+[16.071s] -- Installing: /home/mozijun/Mycode_c/install/cpp_pubsub/share/cpp_pubsub/cmake/cpp_pubsubConfig.cmake
+[16.071s] -- Installing: /home/mozijun/Mycode_c/install/cpp_pubsub/share/cpp_pubsub/cmake/cpp_pubsubConfig-version.cmake
+[16.071s] -- Installing: /home/mozijun/Mycode_c/install/cpp_pubsub/share/cpp_pubsub/package.xml
+[16.075s] Invoked command in '/home/mozijun/Mycode_c/build/cpp_pubsub' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble _=/usr/bin/env /usr/bin/cmake --install /home/mozijun/Mycode_c/build/cpp_pubsub

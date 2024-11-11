@@ -21,10 +21,6 @@ Tracker::Tracker(const Armor& armor, const double& dt)
     state_.at<double>(10) = armor.calculateYawAngle(); // yaw1
     state_.at<double>(11) = state_.at<double>(10) + CV_PI / 2 > CV_PI ? state_.at<double>(10) - CV_PI * 1.5 : state_.at<double>(10) + CV_PI / 2; // yaw2
 
-    // 初始化测量矩阵 H 用于去除速度信息
-    initializeMeasurementMatrix1(state_.at<double>(10), state_.at<double>(8));
-    initializeMeasurementMatrix2(state_.at<double>(10), state_.at<double>(11), state_.at<double>(8), state_.at<double>(9));
-
     // 初始化过程噪声协方差矩阵 Q 
     // 初始化加速度转移矩阵 
     cv::Mat acceleration = (cv::Mat_<double>(12, 4) <<
@@ -95,10 +91,15 @@ cv::Mat Tracker::predict() {
 void Tracker::update1(const Armor& armor) {
     cv::Point3f pointBehindArmor = armor.calculatePointBehindArmor(state_.at<double>(8));
     double yawAngle = armor.calculateYawAngle();
-    while(abs_yaw(yawAngle - state_.at<double>(10)) >= CV_PI / 4) yawAngle = yawinrange(yawAngle + CV_PI / 2); 
+    int temp_i = 0; 
+    while(abs_yaw(yawAngle - state_.at<double>(10)) >= CV_PI / 4) yawAngle = yawinrange(yawAngle + CV_PI / 2), temp_i++; 
     // 创建一个 4x1 的 cv::Mat，包含点的坐标和 yaw 角度
     meas1_ = (cv::Mat_<double>(4, 1) << pointBehindArmor.x, pointBehindArmor.y, pointBehindArmor.z, yawAngle);
-    initializeMeasurementMatrix1(yawAngle, state_.at<double>(8)); 
+    if(temp_i % 2 == 0) initializeMeasurementMatrix1_1(yawAngle, state_.at<double>(8)); 
+    else{
+        while(abs_yaw(yawAngle - state_.at<double>(11)) >= CV_PI / 4) yawAngle = yawinrange(yawAngle + CV_PI / 2);
+        initializeMeasurementMatrix1_2(yawAngle, state_.at<double>(9));
+    }
     kf_.correct(meas1_);
 
     // 更新更新时间
@@ -145,7 +146,11 @@ bool Tracker::isExpired(const int64& frame_id, const int64& gap_time) const {
     return frame_id - last_update_time > gap_time;
 }
 
-void Tracker::initializeMeasurementMatrix1(double theta1, double r) {
+std::pair<double, double> Tracker::getR() const {
+    return std::make_pair(state_.at<double>(8), state_.at<double>(9));
+}
+
+void Tracker::initializeMeasurementMatrix1_1(double theta1, double r) {
     kf_.measurementMatrix = cv::Mat::zeros(4, 12, CV_64F);  // 初始化一个 4x12 的全零矩阵 (CV_64F 表示 double 类型)
     kf_.measurementNoiseCov = cv::Mat::eye(4, 4, CV_64F) * 1e-5;
     kf_.measurementMatrix.at<double>(3, 3) = 0.1;
@@ -154,21 +159,38 @@ void Tracker::initializeMeasurementMatrix1(double theta1, double r) {
     kf_.measurementMatrix.at<double>(0, 0) = 1;
     kf_.measurementMatrix.at<double>(1, 1) = 1;
     kf_.measurementMatrix.at<double>(2, 2) = 1;
-    kf_.measurementMatrix.at<double>(3, 9) = 1;
+    kf_.measurementMatrix.at<double>(3, 10) = 1;
 
     // theta1 的三角函数分量
-    kf_.measurementMatrix.at<double>(0, 7) = -cos(theta1);
-    kf_.measurementMatrix.at<double>(0, 9) = r * sin(theta1);
-    kf_.measurementMatrix.at<double>(1, 7) = -sin(theta1);
-    kf_.measurementMatrix.at<double>(1, 9) = -r * cos(theta1);
+    kf_.measurementMatrix.at<double>(0, 8) = -cos(theta1);
+    kf_.measurementMatrix.at<double>(0, 10) = r * sin(theta1);
+    kf_.measurementMatrix.at<double>(1, 8) = -sin(theta1);
+    kf_.measurementMatrix.at<double>(1, 10) = -r * cos(theta1);
 }
-void Tracker::initializeMeasurementMatrix2(double theta1, double theta2, double r1, double r2) {
-    kf_.measurementMatrix = cv::Mat::zeros(10, 12, CV_64F);  // 初始化一个 10x12 的全零矩阵 (CV_64F 表示 double 类型)
-    kf_.measurementNoiseCov = cv::Mat::eye(10, 10, CV_64F) * 1e-5;
+void Tracker::initializeMeasurementMatrix1_2(double theta1, double r) {
+    kf_.measurementMatrix = cv::Mat::zeros(4, 12, CV_64F);  // 初始化一个 4x12 的全零矩阵 (CV_64F 表示 double 类型)
+    kf_.measurementNoiseCov = cv::Mat::eye(4, 4, CV_64F) * 1e-5;
     kf_.measurementMatrix.at<double>(3, 3) = 0.1;
+
+    // 赋值 1 的块 (左上角的 3x3 单位矩阵)
+    kf_.measurementMatrix.at<double>(0, 0) = 1;
+    kf_.measurementMatrix.at<double>(1, 1) = 1;
+    kf_.measurementMatrix.at<double>(2, 3) = 1;
+    kf_.measurementMatrix.at<double>(3, 11) = 1;
+
+    // theta1 的三角函数分量
+    kf_.measurementMatrix.at<double>(0, 9) = -cos(theta1); 
+    kf_.measurementMatrix.at<double>(0, 11) = r * sin(theta1); 
+    kf_.measurementMatrix.at<double>(1, 9) = -sin(theta1); 
+    kf_.measurementMatrix.at<double>(1, 11) = -r * cos(theta1); 
+}
+void Tracker::initializeMeasurementMatrix2(double theta1, double theta2, double r1, double r2) { 
+    kf_.measurementMatrix = cv::Mat::zeros(10, 12, CV_64F);  // 初始化一个 10x12 的全零矩阵 (CV_64F 表示 double 类型)
+    kf_.measurementNoiseCov = cv::Mat::eye(10, 10, CV_64F) * 1e-5; 
+    kf_.measurementMatrix.at<double>(3, 3) = 0.1; 
     kf_.measurementMatrix.at<double>(7, 7) = 0.1; 
-    kf_.measurementMatrix.at<double>(8, 8) = 0.01;
-    kf_.measurementMatrix.at<double>(9, 9) = 0.01;
+    kf_.measurementMatrix.at<double>(8, 8) = 0.01; 
+    kf_.measurementMatrix.at<double>(9, 9) = 0.01; 
 
     // 赋值 1 的块 (左上和右下的单位矩阵部分)
     kf_.measurementMatrix.at<double>(0, 0) = 1; kf_.measurementMatrix.at<double>(1, 1) = 1; kf_.measurementMatrix.at<double>(2, 2) = 1;
@@ -233,26 +255,41 @@ std::vector<Armor> calculateArmorPositions(const Tracker& tracker) {
     double yaw1 = tracker.state_.at<double>(10);
 
     // 获取底盘半径
-    double r1 = tracker.state_.at<double>(8);
-    double r2 = tracker.state_.at<double>(9);
+    double r[2]; 
+    r[1] = tracker.state_.at<double>(8);
+    r[0] = tracker.state_.at<double>(9);
     for(int i = 1; i <= 4; i++){
         Armor armor;
         armor.is_small = tracker.issmall;
         armor.classification = tracker.classification;
         armor.frame_id = tracker.last_update_time;
-        cv::Mat rotationMatrix = (cv::Mat_<double>(3, 3) << cos(yaw1), 0, sin(yaw1), 0, 1, 0, -sin(yaw1), 0, cos(yaw1));
+        // 现有的旋转矩阵
+        cv::Mat rotationMatrixYaw = (cv::Mat_<double>(3, 3) << 
+            cos(yaw1), 0, sin(yaw1), 
+            0, 1, 0, 
+            -sin(yaw1), 0, cos(yaw1));
+
+        // 俯仰角的旋转矩阵
+        double pitch = 15 * M_PI / 180; // 15度转换为弧度
+        cv::Mat rotationMatrixPitch = (cv::Mat_<double>(3, 3) << 
+            1, 0, 0, 
+            0, cos(pitch), -sin(pitch), 
+            0, sin(pitch), cos(pitch));
+
+        // 最终的旋转矩阵
+        cv::Mat finalRotationMatrix = rotationMatrixPitch * rotationMatrixYaw;
         cv::Mat transformMatrix = cv::Mat::eye(4, 4, CV_64F);
-        rotationMatrix.copyTo(transformMatrix(cv::Rect(0, 0, 3, 3)));
+        finalRotationMatrix.copyTo(transformMatrix(cv::Rect(0, 0, 3, 3)));
         transformMatrix.at<double>(3, 3) = 1.0;
         armor.ex_mat = transformMatrix;
-        cv::Point3f position(r1 * cos(yaw1) + chassis_center.x, chassis_center.y, r1 * sin(CV_PI / 2 * i) + chassis_center.z); 
+        cv::Point3f position(r[i % 2] * cos(yaw1) + chassis_center.x, r[i % 2] * sin(yaw1) + chassis_center.y, chassis_center.z); 
         armor.ex_mat.at<double>(0, 3) = position.y;
         armor.ex_mat.at<double>(1, 3) = -position.z;
         armor.ex_mat.at<double>(2, 3) = position.x;
-        armor.ex_mat = ex_mat;
+        armor.calculatemergedRect();
         armors.push_back(armor);
-
+        yaw1 = yawinrange(yaw1 + CV_PI / 2); 
     }
 
-    return armorPositions;
+    return armors;
 }
